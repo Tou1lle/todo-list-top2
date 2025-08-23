@@ -1,0 +1,16 @@
+{
+  "name": "todo-list-top2",
+  "version": "1.0.0",
+  "description": "This project is part of TOP curriculum which aims to create a Todo List.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tuan Ha <hatuan@email.cz>",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.101.3",
+    "webpack-cli": "^6.0.1",
+    "webpack-merge": "^6.0.1"
+  }
+}
