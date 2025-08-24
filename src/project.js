@@ -18,4 +18,7 @@ class Project {
   }
 
   get tasks() { return this.#tasks; }
+  get name() { return this.#name; }
+
+  set name(name) { this.name = name }
 }
