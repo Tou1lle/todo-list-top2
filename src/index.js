@@ -17,3 +17,7 @@ myProject.addTask(task);
 myProject.addTask(task1);
 myProject.addTask(task2);
 console.table(myProject.tasks);
+//Testing deleting tasks from Project array by their title
+console.log(myProject.getIndexOfTask(task2.title));
+myProject.removeTask(myProject.getIndexOfTask(task2.title));
+console.table(myProject.tasks);

@@ -21,8 +21,8 @@ class Project {
     this.tasks.push(task);
   }
 
-  getIndexOfTask(title) {
-    return this.tasks.indexOf(title);
+  getIndexOfTaskTitle(title) {
+    return this.tasks.map( task => task.title).indexOf(title);
   }
 
   removeTask(index) {
