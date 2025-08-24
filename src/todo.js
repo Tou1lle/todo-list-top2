@@ -42,12 +42,12 @@ class Task {
   get checked() { return this.#checked; }
   get notes() { return this.#notes; }
 
-  set title(title) {this.#title = title}
-  set description(description) {this.#description = description}
-  set dueDate(dueDate) {this.#dueDate = dueDate}
-  set priority(priority) {this.#priority = priority}
-  set checked(checked) {this.#checked = checked}
-  set notes(notes) {this.#notes = notes}
+  set title(title) { this.#title = title }
+  set description(description) { this.#description = description }
+  set dueDate(dueDate) { this.#dueDate = dueDate }
+  set priority(priority) { this.#priority = priority }
+  set checked(checked) { this.#checked = checked }
+  set notes(notes) { this.#notes = notes }
 
 }
 
