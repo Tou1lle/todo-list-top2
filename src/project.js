@@ -1,4 +1,4 @@
-import { Task } from "./todo";
+import { Task } from "./task.js";
 
 /**
  * Project stores Tasks
@@ -13,8 +13,22 @@ class Project {
     this.#name = name;
   }
 
-  addTask(title, description, dueDate, priority, checked, notes) {
+  addTaskWithParam(title, description, dueDate, priority, checked, notes) {
     this.tasks.push(new Task(title, description, dueDate, priority, checked, notes));
+  }
+
+  addTask(task) {
+    this.tasks.push(task);
+  }
+
+  getIndexOfTask(title) {
+    return this.tasks.indexOf(title);
+  }
+
+  removeTask(index) {
+    if (index !== -1) {
+      this.tasks.splice(index, 1);
+    }
   }
 
   get tasks() { return this.#tasks; }
@@ -22,3 +36,5 @@ class Project {
 
   set name(name) { this.name = name }
 }
+
+export { Project };
