@@ -21,8 +21,12 @@ class Project {
     this.tasks.push(task);
   }
 
-  getIndexOfTaskTitle(title) {
-    return this.tasks.map( task => task.title).indexOf(title);
+  getIndexOfTaskByTitle(title) {
+    return this.tasks.map(task => task.title).indexOf(title);
+  }
+
+  getIndexOfTaskByID(id) {
+    return this.tasks.map(task => task.id).indexOf(id);
   }
 
   removeTask(index) {
