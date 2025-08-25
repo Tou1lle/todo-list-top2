@@ -5,12 +5,17 @@ console.log("Hello World!");
 
 // Creating tasks
 const task = new Task();
+task.priority = 3;
 const task1 = new Task("Create Project", "Do this to pass semester", new Date(2025, 11, 24), 3, false, "Try your best");
+task1.priority = 3
 const task2 = new Task("Another", "Something", new Date(2025, 2, 3), 2, true, "Gambare");
 const task3 = new Task("Task3");
+task3.priority = 2;
 const task4 = new Task("Task4");
 const task5 = new Task("Task3");
+task5.priority = 3;
 const task6 = new Task("Task3");
+task6.priority = 2;
 
 // Loging some tasks
 console.log(task);

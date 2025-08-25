@@ -39,6 +39,19 @@ class Project {
     }
   }
 
+  comparePriority(taskA, taskB) {
+    return taskA.priority - taskB.priority;
+  }
+
+  compareChecked(taskA, taskB) {
+    //false values first;
+    return (taskA.checked === taskB.checked) ? 0 : x ? 1 : -1;
+  }
+
+  compareDates(taskA, taskB) {
+    return taskA.dueDate.getTime() - taskB.dueDate.getTime();
+  }
+
   isEmpty() {
     return this.#tasks.length === 0;
   }
