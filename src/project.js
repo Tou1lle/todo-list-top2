@@ -7,6 +7,7 @@ import { Task } from "./task.js";
 class Project {
   #tasks;
   #name;
+  #id;
 
   /**
    * 
@@ -15,6 +16,7 @@ class Project {
   constructor(name = "My new Project") {
     this.#tasks = [];
     this.#name = name;
+    this.#id = crypto.randomUUID();
   }
 
   addTaskWithParam(title, description, dueDate, priority, checked, notes) {
@@ -58,6 +60,7 @@ class Project {
 
   get tasks() { return this.#tasks; }
   get name() { return this.#name; }
+  get id() { return this.#id }
 
   set name(name) { this.name = name }
 }

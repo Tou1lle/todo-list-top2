@@ -1,5 +1,6 @@
 import { Task } from "./task.js";
 import { Project } from "./project.js";
+import { ProjectManager } from "./project-manager.js";
 
 console.log("Hello World!");
 
@@ -29,6 +30,7 @@ console.log(task2);
 
 // Creating Project
 const myProject = new Project("Testing tasks with project");
+const myProject1 = new Project("Testing more projects with project manager")
 
 console.log("LOGGING PROJECT EMPTINESS");
 console.log("------------------");
@@ -66,3 +68,14 @@ console.table(myProject.tasks);
 console.log(myProject.getIndexOfTaskByID(task4.id));
 myProject.removeTask(myProject.getIndexOfTaskByID(task4.id));
 console.table(myProject.tasks);
+
+console.log("LOGGING PROJECT MANAGER");
+console.log("------------------");
+const projectManager = new ProjectManager();
+projectManager.addProject(myProject);
+projectManager.addProject(myProject1);
+console.log(myProject1.id);
+console.log(myProject.id);
+console.log(projectManager.getProjectById(myProject.id));
+projectManager.removeProject(myProject1.id)
+console.log(projectManager);
