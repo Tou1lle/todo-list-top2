@@ -8,6 +8,10 @@ class Project {
   #tasks;
   #name;
 
+  /**
+   * 
+   * @param {string} name name of the project that the user creates
+   */
   constructor(name = "My new Project") {
     this.#tasks = [];
     this.#name = name;
