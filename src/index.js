@@ -3,6 +3,7 @@ import { Project } from "./project.js";
 
 console.log("Hello World!");
 
+// Creating tasks
 const task = new Task();
 const task1 = new Task("Create Project", "Do this to pass semester", new Date(2025, 11, 24), 3, false, "Try your best");
 const task2 = new Task("Another", "Something", new Date(2025, 2, 3), 2, true, "Gambare");
@@ -11,12 +12,17 @@ const task4 = new Task("Task4");
 const task5 = new Task("Task3");
 const task6 = new Task("Task3");
 
-
+// Loging some tasks
 console.log(task);
 console.log(task1);
 console.log(task2);
 
+// Creating Project
 const myProject = new Project("Testing tasks with project");
+
+// Check project emptiness
+console.log("Project is empty: " + myProject.isEmpty());
+
 //Testing adding tasks to Project array
 myProject.addTask(task);
 myProject.addTask(task1);
@@ -25,7 +31,9 @@ myProject.addTask(task3);
 myProject.addTask(task4);
 myProject.addTask(task5);
 myProject.addTask(task6);
+console.log("Project is empty: " + myProject.isEmpty());
 console.table(myProject.tasks);
+
 //Testing deleting tasks from Project array by their title
 console.log(myProject.getIndexOfTaskByTitle(task2.title));
 myProject.removeTask(myProject.getIndexOfTaskByTitle(task2.title));

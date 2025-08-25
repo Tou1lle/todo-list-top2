@@ -35,6 +35,10 @@ class Project {
     }
   }
 
+  isEmpty() {
+    return this.#tasks.length === 0;
+  }
+
   get tasks() { return this.#tasks; }
   get name() { return this.#name; }
 
