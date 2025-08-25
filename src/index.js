@@ -6,18 +6,23 @@ console.log("Hello World!");
 // Creating tasks
 const task = new Task();
 task.priority = 3;
+task.checked = true;
 const task1 = new Task("Create Project", "Do this to pass semester", new Date(2025, 11, 24), 3, false, "Try your best");
 task1.priority = 3
-const task2 = new Task("Another", "Something", new Date(2025, 2, 3), 2, true, "Gambare");
+const task2 = new Task("Another", "Something", new Date(2026, 2, 3), 1, true, "Gambare");
 const task3 = new Task("Task3");
 task3.priority = 2;
 const task4 = new Task("Task4");
-const task5 = new Task("Task3");
+task4.checked = true;
+const task5 = new Task("Task5");
 task5.priority = 3;
-const task6 = new Task("Task3");
+const task6 = new Task("Task6");
 task6.priority = 2;
+task6.dueDate = new Date(2024, 2, 2);
 
 // Loging some tasks
+console.log("LOGGING SOME TASKS");
+console.log("------------------");
 console.log(task);
 console.log(task1);
 console.log(task2);
@@ -25,6 +30,8 @@ console.log(task2);
 // Creating Project
 const myProject = new Project("Testing tasks with project");
 
+console.log("LOGGING PROJECT EMPTINESS");
+console.log("------------------");
 // Check project emptiness
 console.log("Project is empty: " + myProject.isEmpty());
 
@@ -37,6 +44,19 @@ myProject.addTask(task4);
 myProject.addTask(task5);
 myProject.addTask(task6);
 console.log("Project is empty: " + myProject.isEmpty());
+console.log("LOGGING TASKS FROM PROJECT BY ORDER ADDED")
+console.log("------------------");
+console.table(myProject.tasks);
+
+//Testing sort by priority
+console.log("LOGGING SORTED BY PRIORITY -> HIGHEST FIRST");
+myProject.tasks.sort(myProject.comparePriority);
+console.table(myProject.tasks)
+console.log("LOGGING SORTED BY CHECKED -> UNCHECKED FIRST");
+myProject.tasks.sort(myProject.compareChecked);
+console.table(myProject.tasks)
+console.log("LOGGING SORTED BY DUE DATE - CLOSEST FIRST");
+myProject.tasks.sort(myProject.compareDates);
 console.table(myProject.tasks);
 
 //Testing deleting tasks from Project array by their title

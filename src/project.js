@@ -40,12 +40,12 @@ class Project {
   }
 
   comparePriority(taskA, taskB) {
-    return taskA.priority - taskB.priority;
+    return taskB.priority - taskA.priority;
   }
 
   compareChecked(taskA, taskB) {
     //false values first;
-    return (taskA.checked === taskB.checked) ? 0 : x ? 1 : -1;
+    return (taskA.checked === taskB.checked) ? 0 : taskA.checked ? 1 : -1;
   }
 
   compareDates(taskA, taskB) {
