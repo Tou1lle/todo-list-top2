@@ -89,7 +89,36 @@ This is to ensure that the page doesnt get bigger than it needs to be
   background-color: var(--blue);
 }
 
-.menu-deafult,
+.menu-default,
 .menu-projects {
-  padding: 2rem 1.5rem;
+  margin: 2rem 1.5rem;
+}
+
+.menu-default {
+  border-bottom: 1px solid var(--dark-grey-transparent);
+}
+
+.default-option > img {
+  width: 48px;
+  height: 48px;
+}
+
+.default-option {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.default-option > a {
+  text-decoration: none;
+}
+
+.default-option > a:visited {
+  color: black;
+}
+
+.default-option > a:hover {
+  color: var(--blue);
 }
