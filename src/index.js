@@ -1,6 +1,7 @@
 import { Task } from "./script_modules/task.js";
 import { Project } from "./script_modules/project.js";
 import { ProjectManager } from "./script_modules/project-manager.js";
+import "./styles/style.css"
 
 console.log("Hello World!");
 
