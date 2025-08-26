@@ -3,6 +3,7 @@
   --light-grey: #f2f4f7;
   --dark: #1F2937;
   --dark-grey: #9CA3AF;
+  --dark-grey-transparent: #9ca3af66;
   --blue: #346EC9;
   --basic-font: Arial, Helvetica, sans-serif;
   --header-height: 40px;
@@ -59,6 +60,7 @@ This is to ensure that the page doesnt get bigger than it needs to be
   background-color: var(--light-grey);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .sidebar-options {
@@ -66,7 +68,28 @@ This is to ensure that the page doesnt get bigger than it needs to be
 }
 
 .form-add-project {
-  position: fixed;
+  position: sticky;
   bottom: 0;
   left: 0;
+  width: inherit;
+}
+
+.add-new-project {
+  width: 100%;
+  background-color: var(--light-grey);
+  border: none;
+  border-top: 1px solid var(--dark-grey-transparent);
+  padding: 0.5rem;
+  font-weight: bold;
+}
+
+.add-new-project:hover {
+  cursor: pointer;
+  color: var(--white);
+  background-color: var(--blue);
+}
+
+.menu-deafult,
+.menu-projects {
+  padding: 2rem 1.5rem;
 }
