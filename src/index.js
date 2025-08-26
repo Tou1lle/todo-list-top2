@@ -1,6 +1,6 @@
-import { Task } from "./task.js";
-import { Project } from "./project.js";
-import { ProjectManager } from "./project-manager.js";
+import { Task } from "./script_modules/task.js";
+import { Project } from "./script_modules/project.js";
+import { ProjectManager } from "./script_modules/project-manager.js";
 
 console.log("Hello World!");
 
