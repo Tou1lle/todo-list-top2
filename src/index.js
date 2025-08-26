@@ -1,6 +1,6 @@
-import { Task } from "./script_modules/task.js";
-import { Project } from "./script_modules/project.js";
-import { ProjectManager } from "./script_modules/project-manager.js";
+import { Task } from "./script_modules/logic/task.js";
+import { Project } from "./script_modules/logic/project.js";
+import { ProjectManager } from "./script_modules/logic/project-manager.js";
 import "./styles/josh_comeau_reset.css";
 import "./styles/style.css";
 
