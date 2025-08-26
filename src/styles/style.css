@@ -1,6 +1,6 @@
 :root {
   --white: #FFFFFF;
-  --light-grey: #E5E7EB;
+  --light-grey: #f2f4f7;
   --dark: #1F2937;
   --dark-grey: #9CA3AF;
   --blue: #346EC9;
@@ -9,6 +9,9 @@
 
 body {
   font-family: var(--basic-font);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
@@ -24,4 +27,23 @@ h1 {
 
 img.todo-logo {
   display: inline;
+}
+
+.main-body {
+  display: flex;
+  flex: 1;
+}
+
+.main-body > div {
+  flex: 1;
+}
+
+.main-body > div:last-child {
+  flex:3;
+}
+
+.sidebar {
+  background-color: var(--light-grey);
+  display: flex;
+  flex-direction: column;
 }
