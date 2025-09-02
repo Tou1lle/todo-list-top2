@@ -1,11 +1,14 @@
 import { Task } from "./script_modules/logic/task.js";
 import { Project } from "./script_modules/logic/project.js";
 import { ProjectManager } from "./script_modules/logic/project-manager.js";
+import { ProjectViewController } from "./script_modules/ui/project_view.js";
 import "./styles/josh_comeau_reset.css";
 import "./styles/style.css";
 
 console.log("Hello World!");
+ProjectViewController();
 
+/*
 // Creating tasks
 const task = new Task();
 task.priority = 3;
@@ -81,3 +84,4 @@ console.log(myProject.id);
 console.log(projectManager.getProjectById(myProject.id));
 projectManager.removeProject(myProject1.id)
 console.log(projectManager);
+*/
