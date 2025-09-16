@@ -28,6 +28,11 @@ class ProjectManager {
   getProjectById(givenId) {
     return this.#projects.find(({id}) => id === givenId);
   }
+
+  logAllProjects() {
+    this.#projects.forEach(project => console.log(project));
+    console.log(this.#projects.length);
+  }
 }
 
 export { ProjectManager };

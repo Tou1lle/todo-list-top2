@@ -1,4 +1,5 @@
 import { ProjectManager } from "../logic/project-manager";
+import { Project } from "../logic/project";
 
 function ProjectViewController() {
   const menuProjects = document.querySelector(".menu-projects");
@@ -6,7 +7,10 @@ function ProjectViewController() {
   const projectManager = new ProjectManager();
 
   addProjectBtn.addEventListener("click", () => {
-    alert("Button listens!");
+    const projectName = prompt("Create a name for your new Project", "My new Project");
+    const project = new Project(projectName);
+    projectManager.addProject(project);
+    projectManager.logAllProjects();
   })  
 }
 
