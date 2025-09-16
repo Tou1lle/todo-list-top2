@@ -1,5 +1,7 @@
-import { ProjectManager } from "../logic/project-manager";
-import { Project } from "../logic/project";
+import { ProjectManager } from "./../logic/project-manager";
+import { Project } from "./../logic/project";
+import viewIcon from "./../../assets/view-icon2.svg";
+import deleteIcon from "./../../assets/delete-icon2.svg";
 
 function ProjectViewController() {
   const menuProjects = document.querySelector(".menu-projects");
@@ -22,11 +24,25 @@ function ProjectViewController() {
   function createProjectDOM(project) {
     const projectDiv = document.createElement("div");
     const projectName = document.createElement("h3");
+    const buttonContainer = document.createElement("div");
     const buttonView = document.createElement("button");
     const buttonDelete = document.createElement("button");
+    const viewImg = document.createElement("img");
+    const deleteImg = document.createElement("img");
 
+    viewImg.src = viewIcon;
+    deleteImg.src = deleteIcon;
+    buttonView.appendChild(viewImg);
+    buttonDelete.appendChild(deleteImg);
     projectName.textContent = project.name;
-    projectDiv.append(projectName, buttonView, buttonDelete);
+    buttonContainer.append(buttonView, buttonDelete);
+    projectDiv.append(projectName, buttonContainer);
+
+    projectDiv.classList.add("project-option");
+    projectName.classList.add("project-name");
+    buttonContainer.classList.add("project-button-container");
+    buttonView.classList.add("button-view");
+    buttonDelete.classList.add("button-delete");
 
     return projectDiv;
   }

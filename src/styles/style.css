@@ -122,3 +122,47 @@ This is to ensure that the page doesnt get bigger than it needs to be
 .default-option > a:hover {
   color: var(--blue);
 }
+
+.project-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.project-button-container {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.project-button-container > button {
+  flex-shrink: 0;
+}
+
+.project-button-container button {
+  border: none;
+  background-color: inherit;
+}
+
+.button-view > img,
+.button-delete > img {
+  width: 35px;
+  height: 35px;
+  opacity: 0.5;
+  display: flex;
+  justify-content: center;
+}
+
+.button-view > img:hover,
+.button-delete > img:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.project-option > h3 {
+  width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
