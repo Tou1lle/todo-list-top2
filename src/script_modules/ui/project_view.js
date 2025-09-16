@@ -41,6 +41,7 @@ function ProjectViewController() {
     const viewImg = document.createElement("img");
     const deleteImg = document.createElement("img");
 
+    projectDiv.dataset.id = project.id;
     viewImg.src = viewIcon;
     deleteImg.src = deleteIcon;
     buttonView.appendChild(viewImg);
@@ -55,6 +56,11 @@ function ProjectViewController() {
     buttonView.classList.add("button-view");
     buttonDelete.classList.add("button-delete");
 
+    buttonDelete.addEventListener("click", e => {
+      const id = getProjectID(e);
+      console.log(id);
+    });
+
     return projectDiv;
   }
 
@@ -68,6 +74,14 @@ function ProjectViewController() {
       const projectDiv = createProjectDOM(project);
       addProjectToMenu(projectDiv);
     });
+  }
+
+  function getProjectID(e) {
+    return e.currentTarget.parentNode.parentNode.dataset.id;
+  }
+
+  function deleteProject(e) {
+    
   }
 
   function initial() {
