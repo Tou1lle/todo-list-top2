@@ -33,6 +33,8 @@ class ProjectManager {
     this.#projects.forEach(project => console.log(project));
     console.log(this.#projects.length);
   }
+
+  get projects() { return this.#projects }
 }
 
 export { ProjectManager };

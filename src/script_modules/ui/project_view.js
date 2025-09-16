@@ -11,7 +11,36 @@ function ProjectViewController() {
     const project = new Project(projectName);
     projectManager.addProject(project);
     projectManager.logAllProjects();
-  })  
+    updateMenu();
+  })
+
+  function clearMenu() {
+    menuProjects.textContent = "";
+  }
+
+  function createProjectDOM(project) {
+    const projectDiv = document.createElement("div");
+    const projectName = document.createElement("h3");
+    const buttonView = document.createElement("button");
+    const buttonDelete = document.createElement("button");
+
+    projectName.textContent = project.name;
+    projectDiv.append(projectName, buttonView, buttonDelete);
+
+    return projectDiv;
+  }
+
+  function addProjectToMenu(projectDiv) {
+    menuProjects.appendChild(projectDiv);
+  }
+
+  function updateMenu() {
+    clearMenu();
+    projectManager.projects.forEach(project => {
+      const projectDiv = createProjectDOM(project);
+      addProjectToMenu(projectDiv);
+    });
+  }
 }
 
 export { ProjectViewController };
