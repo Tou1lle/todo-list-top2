@@ -11,11 +11,22 @@ function ProjectViewController() {
 
   addProjectBtn.addEventListener("click", () => {
     const projectName = prompt("Create a name for your new Project", "My new Project");
+    if (!checkEnteredName(projectName)) { return };
     const project = new Project(projectName);
     projectManager.addProject(project);
     projectManager.logAllProjects();
     updateMenu();
   })
+
+  function checkEnteredName(name) {
+    if (name === null) return false;
+    if (name === "") {
+      alert("Please enter a name for the Project");
+      return false;
+    }
+
+    return true;
+  }
 
   function clearMenu() {
     menuProjects.textContent = "";
