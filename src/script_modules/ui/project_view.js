@@ -58,7 +58,9 @@ function ProjectViewController() {
 
     buttonDelete.addEventListener("click", e => {
       const id = getProjectID(e);
-      console.log(id);
+      deleteProject(id);
+      updateMenu();
+      projectManager.logAllProjects();
     });
 
     return projectDiv;
@@ -80,8 +82,8 @@ function ProjectViewController() {
     return e.currentTarget.parentNode.parentNode.dataset.id;
   }
 
-  function deleteProject(e) {
-    
+  function deleteProject(id) {
+    projectManager.removeProject(id);
   }
 
   function initial() {
