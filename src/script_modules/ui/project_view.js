@@ -5,6 +5,7 @@ function ProjectViewController() {
   const menuProjects = document.querySelector(".menu-projects");
   const addProjectBtn = document.querySelector(".add-new-project");
   const projectManager = new ProjectManager();
+  initial();
 
   addProjectBtn.addEventListener("click", () => {
     const projectName = prompt("Create a name for your new Project", "My new Project");
@@ -40,6 +41,12 @@ function ProjectViewController() {
       const projectDiv = createProjectDOM(project);
       addProjectToMenu(projectDiv);
     });
+  }
+
+  function initial() {
+    const defaultProject = new Project();
+    projectManager.addProject(defaultProject);
+    addProjectToMenu(createProjectDOM(defaultProject));
   }
 }
 
