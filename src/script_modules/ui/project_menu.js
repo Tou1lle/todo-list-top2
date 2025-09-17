@@ -91,6 +91,12 @@ function ProjectMenuController() {
     projectManager.addProject(defaultProject);
     addProjectToMenu(createProjectDOM(defaultProject));
   }
+
+  function getProjectManager() {
+    return projectManager;
+  }
+
+  return { getProjectManager }
 }
 
 export { ProjectMenuController };

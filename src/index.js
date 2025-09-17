@@ -1,12 +1,14 @@
 import { Task } from "./script_modules/logic/task.js";
 import { Project } from "./script_modules/logic/project.js";
 import { ProjectManager } from "./script_modules/logic/project-manager.js";
+import { ProjectMenuController } from "./script_modules/ui/project_menu.js";
 import { ProjectViewController } from "./script_modules/ui/project_view.js";
 import "./styles/josh_comeau_reset.css";
 import "./styles/style.css";
 
 console.log("Hello World!");
-ProjectViewController();
+const projectMenuController = ProjectMenuController();
+const projectViewController = ProjectViewController(projectMenuController.getProjectManager());
 
 /*
 // Creating tasks
