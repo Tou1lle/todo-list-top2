@@ -8,12 +8,16 @@ function ProjectViewController(projectManagerArg) {
   const projectManager = projectManagerArg;
   const menuProjects = document.querySelector(".menu-projects");
 
-  function getProjectID(e) {
+  function getProjectIDViewButton(e) {
     const id = e.target.parentNode.parentNode.parentNode.dataset.id;
+    //check if button(image technically) was clicked
+    if (!id) return;
+    //only get the ID when View button is clicked
+    if (e.target.parentNode.classList.contains("button-delete")) return;
     console.log(id);
   }
 
-  menuProjects.addEventListener("click", getProjectID);
+  menuProjects.addEventListener("click", getProjectIDViewButton);
 
   const todoTest = document.querySelector(".todo-logo");
   todoTest.addEventListener("click", () => projectManager.logAllProjects());
