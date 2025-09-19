@@ -5,8 +5,15 @@
 import { ProjectMenuController } from "./project_menu";
 
 function ProjectViewController(projectManagerArg) {
-  const menuProjects = document.querySelector(".menu-projects");
   const projectManager = projectManagerArg;
+  const menuProjects = document.querySelector(".menu-projects");
+
+  function getProjectID(e) {
+    const id = e.target.parentNode.parentNode.parentNode.dataset.id;
+    console.log(id);
+  }
+
+  menuProjects.addEventListener("click", getProjectID);
 
   const todoTest = document.querySelector(".todo-logo");
   todoTest.addEventListener("click", () => projectManager.logAllProjects());

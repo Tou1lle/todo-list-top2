@@ -9,15 +9,6 @@ function ProjectMenuController() {
   const projectManager = new ProjectManager();
   initial();
 
-  addProjectBtn.addEventListener("click", () => {
-    const projectName = prompt("Create a name for your new Project", "My new Project");
-    if (!checkEnteredName(projectName)) { return };
-    const project = new Project(projectName);
-    projectManager.addProject(project);
-    projectManager.logAllProjects();
-    updateMenu();
-  })
-
   function checkEnteredName(name) {
     if (name === null) return false;
     if (name === "") {
@@ -95,6 +86,15 @@ function ProjectMenuController() {
   function getProjectManager() {
     return projectManager;
   }
+
+  addProjectBtn.addEventListener("click", () => {
+    const projectName = prompt("Create a name for your new Project", "My new Project");
+    if (!checkEnteredName(projectName)) { return };
+    const project = new Project(projectName);
+    projectManager.addProject(project);
+    projectManager.logAllProjects();
+    updateMenu();
+  })
 
   return { getProjectManager }
 }
