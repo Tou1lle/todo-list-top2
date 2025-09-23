@@ -8,15 +8,17 @@ class Project {
   #tasks;
   #name;
   #id;
+  #selected;
 
   /**
    * 
    * @param {string} name name of the project that the user creates
    */
   constructor(name = "My new Project") {
-    this.#tasks = [];
-    this.#name = name;
-    this.#id = crypto.randomUUID();
+    this.tasks = [];
+    this.name = name;
+    this.id = crypto.randomUUID();
+    this.selected = false;
   }
 
   addTaskWithParam(title, description, dueDate, priority, checked, notes) {
@@ -58,11 +60,19 @@ class Project {
     return this.#tasks.length === 0;
   }
 
+  toggleSelected() {
+    this.selected = !this.selected;
+  }
+
   get tasks() { return this.#tasks; }
   get name() { return this.#name; }
-  get id() { return this.#id }
+  get id() { return this.#id; }
+  get selected() { return this.#selected; }
 
-  set name(name) { this.name = name }
+  set tasks(arr) { this.#tasks = arr }
+  set name(name) { this.#name = name }
+  set id(randomID) { this.#id = randomID };
+  set selected(bool) { this.#selected = bool; } 
 }
 
 export { Project };
