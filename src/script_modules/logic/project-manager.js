@@ -39,6 +39,29 @@ class ProjectManager {
     foundProject.selected = true;
   }
 
+  isEmpty() {
+    if (this.projects.length === 0 || this.projects === undefined) return true;
+    return false;
+  }
+
+  resetSelected() {
+    if (this.isEmpty()) return;
+
+    this.projects.forEach((project) => {
+      project.selected = false;
+    });
+  }
+
+  hasSelected() {
+    if (this.isEmpty()) return;
+
+    return this.projects.map((project) => project.selected).includes(true);
+  }
+
+  getSelected() {
+    return this.projects.find((project) => project.selected === true);
+  }
+
   get projects() { return this.#projects }
 }
 

@@ -91,6 +91,7 @@ console.log("------------------");
 
 console.log("TESTING SELECTED")
 const projectManager1 = new ProjectManager();
+console.log(projectManager1.isEmpty());
 
 const project1 = new Project();
 const project2 = new Project();
@@ -107,6 +108,7 @@ projectManager1.addProject(project4);
 projectManager1.addProject(project5);
 projectManager1.addProject(project6);
 projectManager1.addProject(project7);
+console.log(projectManager1.isEmpty());
 
 projectManager1.logAllProjects();
 
@@ -121,3 +123,13 @@ console.log("----")
 //Testing setSelected(id)
 projectManager1.setSelectedProject(id2);
 projectManager1.logAllProjects();
+console.log(`This project manager has a selected project: ${projectManager1.hasSelected()}`);
+console.log(`Selected project when there is: ${projectManager1.getSelected()}`);
+console.log(projectManager1.getSelected());
+console.log("-----")
+
+projectManager1.resetSelected();
+projectManager1.logAllProjects();
+console.log(`This project manager has a selected project: ${projectManager1.hasSelected()}`);
+
+console.log(`Selected project when none: ${projectManager1.getSelected()}`);
