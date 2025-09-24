@@ -114,7 +114,7 @@ projectManager1.logAllProjects();
 const id2 = project2.id;
 console.log(id2);
 
-const foundProject = projectManager1.findProject(id2);
+const foundProject = projectManager1.getProjectById(id2);
 console.log(foundProject);
 console.log("----")
 
