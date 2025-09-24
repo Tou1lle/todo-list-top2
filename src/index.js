@@ -6,11 +6,13 @@ import { ProjectViewController } from "./script_modules/ui/project_view.js";
 import "./styles/josh_comeau_reset.css";
 import "./styles/style.css";
 
+/*
 console.log("Hello World!");
 const projectMenuController = ProjectMenuController();
 const projectViewController = ProjectViewController(projectMenuController.getProjectManager());
+*/
 
-/*
+
 // Creating tasks
 const task = new Task();
 task.priority = 3;
@@ -30,17 +32,15 @@ task6.dueDate = new Date(2024, 2, 2);
 
 // Loging some tasks
 console.log("LOGGING SOME TASKS");
-console.log("------------------");
 console.log(task);
 console.log(task1);
 console.log(task2);
-
+console.log("------------------");
 // Creating Project
 const myProject = new Project("Testing tasks with project");
 const myProject1 = new Project("Testing more projects with project manager")
 
 console.log("LOGGING PROJECT EMPTINESS");
-console.log("------------------");
 // Check project emptiness
 console.log("Project is empty: " + myProject.isEmpty());
 
@@ -53,8 +53,9 @@ myProject.addTask(task4);
 myProject.addTask(task5);
 myProject.addTask(task6);
 console.log("Project is empty: " + myProject.isEmpty());
-console.log("LOGGING TASKS FROM PROJECT BY ORDER ADDED")
 console.log("------------------");
+
+console.log("LOGGING TASKS FROM PROJECT BY ORDER ADDED")
 console.table(myProject.tasks);
 
 //Testing sort by priority
@@ -75,9 +76,9 @@ console.table(myProject.tasks);
 console.log(myProject.getIndexOfTaskByID(task4.id));
 myProject.removeTask(myProject.getIndexOfTaskByID(task4.id));
 console.table(myProject.tasks);
+console.log("------------------");
 
 console.log("LOGGING PROJECT MANAGER");
-console.log("------------------");
 const projectManager = new ProjectManager();
 projectManager.addProject(myProject);
 projectManager.addProject(myProject1);
@@ -86,4 +87,37 @@ console.log(myProject.id);
 console.log(projectManager.getProjectById(myProject.id));
 projectManager.removeProject(myProject1.id)
 console.log(projectManager);
-*/
+console.log("------------------");
+
+console.log("TESTING SELECTED")
+const projectManager1 = new ProjectManager();
+
+const project1 = new Project();
+const project2 = new Project();
+const project3 = new Project();
+const project4 = new Project();
+const project5 = new Project();
+const project6 = new Project();
+const project7 = new Project();
+
+projectManager1.addProject(project1);
+projectManager1.addProject(project2);
+projectManager1.addProject(project3);
+projectManager1.addProject(project4);
+projectManager1.addProject(project5);
+projectManager1.addProject(project6);
+projectManager1.addProject(project7);
+
+projectManager1.logAllProjects();
+
+//Testing findProject(id)
+const id2 = project2.id;
+console.log(id2);
+
+const foundProject = projectManager1.findProject(id2);
+console.log(foundProject);
+console.log("----")
+
+//Testing setSelected(id)
+projectManager1.setSelected(id2);
+projectManager1.logAllProjects();

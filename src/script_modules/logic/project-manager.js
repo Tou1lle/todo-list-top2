@@ -34,6 +34,17 @@ class ProjectManager {
     console.log(this.#projects.length);
   }
 
+  findProject(id) {
+    return this.projects.find((project) => {
+      return project.id === id;
+    })
+  }
+
+  setSelected(id) {
+    const foundProject = this.findProject(id);
+    foundProject.selected = true;
+  }
+
   get projects() { return this.#projects }
 }
 
