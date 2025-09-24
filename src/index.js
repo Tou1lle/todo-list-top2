@@ -119,5 +119,5 @@ console.log(foundProject);
 console.log("----")
 
 //Testing setSelected(id)
-projectManager1.setSelected(id2);
+projectManager1.setSelectedProject(id2);
 projectManager1.logAllProjects();

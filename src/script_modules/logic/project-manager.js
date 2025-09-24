@@ -34,7 +34,7 @@ class ProjectManager {
     console.log(this.#projects.length);
   }
 
-  setSelected(id) {
+  setSelectedProject(id) {
     const foundProject = this.getProjectById(id);
     foundProject.selected = true;
   }
