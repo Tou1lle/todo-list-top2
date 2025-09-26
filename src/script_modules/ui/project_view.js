@@ -3,6 +3,12 @@
 // -> We can't run ProjectMenuController -> we would create a new ProjectManager
 // -> Solution: Inject the ProjectMenuController/ProjectManager
 
+import { ProjectManager } from "../logic/project-manager";
+
+/**
+ * 
+ * @param {ProjectManager} projectManagerArg 
+ */
 function ProjectViewController(projectManagerArg) {
   const projectManager = projectManagerArg;
   const menuProjects = document.querySelector(".menu-projects");
@@ -18,10 +24,23 @@ function ProjectViewController(projectManagerArg) {
     return id;
   }
 
+  function clearMain() {
+    projectDisplay.textContent = "";
+  }
+
+  function updateMain() {
+    clearMain();
+    const h2 = document.createElement("h2");
+    const selectedProject = projectManager.getSelected();
+    h2.textContent = selectedProject.name;
+    projectDisplay.appendChild(h2);
+  }
+
   function runView(e) {
     const projectID = getProjectIDViewButton(e);
     projectManager.resetSelected();
     projectManager.setSelected(projectID);
+    updateMain();
   }
 
   function getButtonClass(e) {
