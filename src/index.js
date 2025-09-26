@@ -6,13 +6,11 @@ import { ProjectViewController } from "./script_modules/ui/project_view.js";
 import "./styles/josh_comeau_reset.css";
 import "./styles/style.css";
 
-/*
 console.log("Hello World!");
 const projectMenuController = ProjectMenuController();
 const projectViewController = ProjectViewController(projectMenuController.getProjectManager());
-*/
 
-
+/*
 // Creating tasks
 const task = new Task();
 task.priority = 3;
@@ -133,3 +131,4 @@ projectManager1.logAllProjects();
 console.log(`This project manager has a selected project: ${projectManager1.hasSelected()}`);
 
 console.log(`Selected project when none: ${projectManager1.getSelected()}`);
+*/

@@ -6,6 +6,7 @@
 function ProjectViewController(projectManagerArg) {
   const projectManager = projectManagerArg;
   const menuProjects = document.querySelector(".menu-projects");
+  const projectDisplay = document.querySelector(".project-display");
 
   function getProjectIDViewButton(e) {
     const id = e.target.parentNode.parentNode.parentNode.dataset.id;
@@ -14,9 +15,16 @@ function ProjectViewController(projectManagerArg) {
     //only get the ID when View button is clicked
     if (e.target.parentNode.classList.contains("button-delete")) return;
     console.log(id);
+    return id;
   }
 
-  menuProjects.addEventListener("click", getProjectIDViewButton);
+  function runView(e) {
+    const projectID = getProjectIDViewButton(e);
+    projectManager.resetSelected();
+    projectManager.setSelected(projectID);
+  }
+
+  menuProjects.addEventListener("click", runView);
 
   const todoTest = document.querySelector(".todo-logo");
   todoTest.addEventListener("click", () => projectManager.logAllProjects());
