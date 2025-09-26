@@ -24,7 +24,20 @@ function ProjectViewController(projectManagerArg) {
     projectManager.setSelected(projectID);
   }
 
-  menuProjects.addEventListener("click", runView);
+  function getButtonClass(e) {
+    //console.log(e.target.parentNode.classList);
+    return e.target.parentNode.classList;
+  }
+
+  menuProjects.addEventListener("click", e => {
+    if (getButtonClass(e).contains("button-view")) {
+      runView(e);
+    } 
+
+    if (getButtonClass(e).contains("button-delete")) {
+      console.log("Second event listener on this button fired!")
+    }
+  });
 
   const todoTest = document.querySelector(".todo-logo");
   todoTest.addEventListener("click", () => projectManager.logAllProjects());
