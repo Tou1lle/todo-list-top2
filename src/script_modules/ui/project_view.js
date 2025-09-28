@@ -13,6 +13,7 @@ function ProjectViewController(projectManagerArg) {
   const projectManager = projectManagerArg;
   const menuProjects = document.querySelector(".menu-projects");
   const projectDisplay = document.querySelector(".project-display");
+  initial();
 
   function getProjectIDViewButton(e) {
     const id = e.target.parentNode.parentNode.parentNode.dataset.id;
@@ -28,12 +29,15 @@ function ProjectViewController(projectManagerArg) {
     projectDisplay.textContent = "";
   }
 
+  //Finnish this function
   function updateMain() {
     clearMain();
     const h2 = document.createElement("h2");
     const selectedProject = projectManager.getSelected();
     h2.textContent = selectedProject.name;
     projectDisplay.appendChild(h2);
+
+    console.log(findDOMbyID(selectedProject.id, getProjectsDOM()));
   }
 
   function runView(e) {
@@ -48,6 +52,21 @@ function ProjectViewController(projectManagerArg) {
     return e.target.parentNode.classList;
   }
 
+  function initial() {
+    if (!projectManager.hasSelected()) {
+      projectManager.setFirstSelected();
+      updateMain();
+    }
+  }
+
+  function getProjectsDOM() {
+    return Array.from(document.querySelectorAll(".project-option"));
+  }
+
+  function findDOMbyID(id, array) {
+    return array.find(projectDOM => projectDOM.dataset.id === id);
+  }
+
   menuProjects.addEventListener("click", e => {
     if (getButtonClass(e).contains("button-view")) {
       runView(e);
@@ -59,7 +78,10 @@ function ProjectViewController(projectManagerArg) {
   });
 
   const todoTest = document.querySelector(".todo-logo");
-  todoTest.addEventListener("click", () => projectManager.logAllProjects());
+  todoTest.addEventListener("click", () => {
+    projectManager.logAllProjects();
+    console.log(getProjectsDOM());
+  });
   projectManager.logAllProjects();
 }
 

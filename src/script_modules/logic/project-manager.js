@@ -39,6 +39,11 @@ class ProjectManager {
     foundProject.selected = true;
   }
 
+  setFirstSelected() {
+    if (this.isEmpty()) return;
+    this.projects[0].selected = true;
+  }
+
   isEmpty() {
     if (this.projects.length === 0 || this.projects === undefined) return true;
     return false;
