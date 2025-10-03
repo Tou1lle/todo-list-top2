@@ -37,7 +37,10 @@ function ProjectViewController(projectManagerArg) {
     h2.textContent = selectedProject.name;
     projectDisplay.appendChild(h2);
 
-    console.log(findDOMbyID(selectedProject.id, getProjectsDOM()));
+    const selectedDOM = getDOMbyID(selectedProject.id, getProjectsDOM());
+    setSelectedDOM(selectedDOM);
+
+    console.log(getDOMbyID(selectedProject.id, getProjectsDOM()));
   }
 
   function runView(e) {
@@ -63,8 +66,18 @@ function ProjectViewController(projectManagerArg) {
     return Array.from(document.querySelectorAll(".project-option"));
   }
 
-  function findDOMbyID(id, array) {
+  function getDOMbyID(id, array) {
     return array.find(projectDOM => projectDOM.dataset.id === id);
+  }
+
+  function resetSelectedDOM() {
+    const projectsDOM = getProjectsDOM();
+    projectsDOM.forEach(project => project.classList.remove("selected-project"));
+  }
+
+  function setSelectedDOM(dom) {
+    resetSelectedDOM();
+    dom.classList.add("selected-project");
   }
 
   menuProjects.addEventListener("click", e => {

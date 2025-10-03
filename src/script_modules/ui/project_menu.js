@@ -54,6 +54,10 @@ function ProjectMenuController() {
       projectManager.logAllProjects();
     });
 
+    if (project.selected) {
+      projectDiv.classList.add("selected-project");
+    }
+
     return projectDiv;
   }
 

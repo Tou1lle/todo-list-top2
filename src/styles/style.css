@@ -166,3 +166,7 @@ This is to ensure that the page doesnt get bigger than it needs to be
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.selected-project {
+  color: var(--blue);
+}
