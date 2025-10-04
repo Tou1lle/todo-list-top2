@@ -50,6 +50,19 @@ function ProjectViewController(projectManagerArg) {
     updateMain();
   }
 
+  function runDelete() {
+    if (projectManager.isEmpty()) {
+      clearMain();
+      //add function to display some message that there are no projects
+      return;
+    }
+    
+    if (!projectManager.hasSelected()) {
+      projectManager.setFirstSelected();
+      updateMain();
+    }
+  }
+
   function getButtonClass(e) {
     //console.log(e.target.parentNode.classList);
     return e.target.parentNode.classList;
@@ -86,6 +99,7 @@ function ProjectViewController(projectManagerArg) {
     } 
 
     if (getButtonClass(e).contains("button-delete")) {
+      runDelete();
       console.log("Second event listener on this button fired!")
     }
   });
