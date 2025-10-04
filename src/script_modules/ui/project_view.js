@@ -13,6 +13,7 @@ function ProjectViewController(projectManagerArg) {
   const projectManager = projectManagerArg;
   const menuProjects = document.querySelector(".menu-projects");
   const projectDisplay = document.querySelector(".project-display");
+  const addProjectBtn = document.querySelector(".add-new-project");
   initial();
 
   function getProjectIDViewButton(e) {
@@ -64,7 +65,6 @@ function ProjectViewController(projectManagerArg) {
   }
 
   function getButtonClass(e) {
-    //console.log(e.target.parentNode.classList);
     return e.target.parentNode.classList;
   }
 
@@ -100,7 +100,13 @@ function ProjectViewController(projectManagerArg) {
 
     if (getButtonClass(e).contains("button-delete")) {
       runDelete();
-      console.log("Second event listener on this button fired!")
+    }
+  });
+
+  addProjectBtn.addEventListener("click", e => {
+    if (projectManager.projects.length === 1) {
+      projectManager.setFirstSelected();
+      updateMain();
     }
   });
 
