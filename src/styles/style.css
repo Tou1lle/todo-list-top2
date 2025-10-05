@@ -170,3 +170,12 @@ This is to ensure that the page doesnt get bigger than it needs to be
 .selected-project {
   color: var(--blue);
 }
+
+.project-display {
+  padding: 1.5rem;
+}
+
+.project-head {
+  display: flex;
+  justify-content: space-between;
+}

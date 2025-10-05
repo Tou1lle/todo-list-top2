@@ -13,6 +13,8 @@ function ProjectViewController(projectManagerArg) {
   const projectManager = projectManagerArg;
   const menuProjects = document.querySelector(".menu-projects");
   const projectDisplay = document.querySelector(".project-display");
+  const projectHead = document.querySelector(".project-header");
+  const projectBody = document.querySelector(".project-body");
   const addProjectBtn = document.querySelector(".add-new-project");
   initial();
 
@@ -27,7 +29,8 @@ function ProjectViewController(projectManagerArg) {
   }
 
   function clearMain() {
-    projectDisplay.textContent = "";
+    projectHead.textContent = "";
+    projectBody.textContent = "";
   }
 
   //Finnish this function
@@ -36,7 +39,7 @@ function ProjectViewController(projectManagerArg) {
     const h2 = document.createElement("h2");
     const selectedProject = projectManager.getSelected();
     h2.textContent = selectedProject.name;
-    projectDisplay.appendChild(h2);
+    projectHead.appendChild(h2);
 
     const selectedDOM = getDOMbyID(selectedProject.id, getProjectsDOM());
     setSelectedDOM(selectedDOM);

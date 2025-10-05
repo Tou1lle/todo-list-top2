@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Todo List</title>
 </head>
+
 <body>
-  <h1><div>Todo List - <em>a place for your productivity</em></div> <img src="./assets/tabler--subtask.svg" alt="Todo list logo." class="todo-logo"></h1>
+  <h1>
+    <div>Todo List - <em>a place for your productivity</em></div> <img src="./assets/tabler--subtask.svg"
+      alt="Todo list logo." class="todo-logo">
+  </h1>
   <div class="main-body">
     <div class="sidebar">
       <div class="sidebar-options">
@@ -25,7 +30,7 @@
           </div>
         </div>
         <div class="menu-projects">
-          
+
         </div>
       </div>
       <div class="form-add-project">
@@ -33,8 +38,28 @@
       </div>
     </div>
     <div class="project-display">
-    
+      <div class="project-head">
+        <div class="project-header">
+        </div>
+        <div class="project-btn-container">
+          <select name="project-sort" id="sort">
+            <option value="default">Default</option>
+            <option value="Priority">Priority</option>
+            <option value="Date">Date</option>
+          </select>
+          <select name="project-filter" id="filter">
+            <option value="done">Done</option>
+            <option value="not-done">Not Done</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+          <button class="add-new-task">Add Task</button>
+        </div>
+      </div>
+      <div class="project-body"></div>
     </div>
   </div>
 </body>
+
 </html>
