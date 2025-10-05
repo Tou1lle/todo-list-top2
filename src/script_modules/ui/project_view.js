@@ -15,6 +15,7 @@ function ProjectViewController(projectManagerArg) {
   const projectDisplay = document.querySelector(".project-display");
   const projectHead = document.querySelector(".project-header");
   const projectBody = document.querySelector(".project-body");
+  const projectBtns = document.querySelector(".project-btn-container");
   const addProjectBtn = document.querySelector(".add-new-project");
   initial();
 
@@ -54,9 +55,18 @@ function ProjectViewController(projectManagerArg) {
     updateMain();
   }
 
+  function hideBtns() {
+    projectBtns.style.display = "none";
+  }
+
+  function showBtns() {
+    projectBtns.style.display = "flex";
+  }
+
   function runDelete() {
     if (projectManager.isEmpty()) {
       clearMain();
+      hideBtns();
       //add function to display some message that there are no projects
       return;
     }
@@ -110,6 +120,7 @@ function ProjectViewController(projectManagerArg) {
     if (projectManager.projects.length === 1) {
       projectManager.setFirstSelected();
       updateMain();
+      showBtns();
     }
   });
 
