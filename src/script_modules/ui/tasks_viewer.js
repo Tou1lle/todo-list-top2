@@ -12,6 +12,13 @@ function TaskViewer(projectManagerArg) {
   const form = document.querySelector(".form-task");
   const btnCancel = document.querySelector(".form-cancel-btn");
   const btnSubmit = document.querySelector(".form-submit-btn");
+  const taskName = document.querySelector("#task-name");
+  const taskDate = document.querySelector("#task-duedate");
+  const taskPrio = document.querySelector("#task-prio");
+  const taskChecked = document.querySelector("#task-checked");
+  const taskNotes = document.querySelector("#task-notes");
+
+  taskNotes.value = "WORK";
 
   //return array of tasks
   function getSelectedTasks() {
@@ -30,8 +37,18 @@ function TaskViewer(projectManagerArg) {
     dialog.close();
   }
 
+  function createTask() {
+
+  }
+
   dialog.addEventListener("close", (e) => {
     resetForm();
+  })
+
+  btnCancel.addEventListener("click", (e) => {
+    e.preventDefault();
+    resetForm();
+    closeDialog();
   })
 
   addTaskBtn.addEventListener("click", (e) => {
