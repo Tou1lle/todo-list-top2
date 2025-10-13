@@ -73,11 +73,11 @@
         <input type="date" id="task-duedate" name="task-duedate">
       </div>
       <div>
-        <label for="task-prio">Priotity (1 high - 3 low)</label>
+        <label for="task-prio">Priotity:</label>
         <select name="task-prio" id="task-prio">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
+          <option value="1">Low</option>
+          <option value="2">Mid</option>
+          <option value="3">High</option>
         </select>
       </div>
       <div>
@@ -89,6 +89,10 @@
         <textarea name="task-notes" id="task-notes"></textarea>
       </div>
     </form>
+    <div>
+      <button type="reset" class="form-cancel-btn">Cancel</button>
+      <button type="submit" class="form-submit-btn">Create Task</button>
+    </div>
   </dialog>
 </body>
 

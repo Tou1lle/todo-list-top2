@@ -7,6 +7,7 @@
   --blue: #346EC9;
   --basic-font: Arial, Helvetica, sans-serif;
   --header-height: 40px;
+  --form-gap: 20px;
 }
 
 /*
@@ -51,12 +52,12 @@ This is to ensure that the page doesnt get bigger than it needs to be
   max-height: calc(100% - var(--header-height));
 }
 
-.main-body > div {
+.main-body>div {
   flex: 1;
 }
 
-.main-body > div:last-child {
-  flex:3;
+.main-body>div:last-child {
+  flex: 3;
 }
 
 /*
@@ -116,7 +117,7 @@ dividing the sidebar and some centering
 /*
 Images for the default options
 */
-.default-option > img {
+.default-option>img {
   width: 48px;
   height: 48px;
 }
@@ -129,15 +130,15 @@ Images for the default options
   margin-bottom: 5px;
 }
 
-.default-option > a {
+.default-option>a {
   text-decoration: none;
 }
 
-.default-option > a:visited {
+.default-option>a:visited {
   color: black;
 }
 
-.default-option > a:hover {
+.default-option>a:hover {
   color: var(--blue);
 }
 
@@ -160,7 +161,7 @@ Centering the SVG imgs for Projects
   align-items: center;
 }
 
-.project-button-container > button {
+.project-button-container>button {
   flex-shrink: 0;
 }
 
@@ -172,8 +173,8 @@ Centering the SVG imgs for Projects
 /*
 Making the buttons appropriate size and center
 */
-.button-view > img,
-.button-delete > img {
+.button-view>img,
+.button-delete>img {
   width: 35px;
   height: 35px;
   opacity: 0.5;
@@ -181,8 +182,8 @@ Making the buttons appropriate size and center
   justify-content: center;
 }
 
-.button-view > img:hover,
-.button-delete > img:hover {
+.button-view>img:hover,
+.button-delete>img:hover {
   opacity: 1;
   cursor: pointer;
 }
@@ -190,7 +191,7 @@ Making the buttons appropriate size and center
 /*
 Make the Project's name not overflow and hide the longer names
 */
-.project-option > h3 {
+.project-option>h3 {
   width: 200px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -228,7 +229,7 @@ Styling for select and button elements for the Project in main page
   gap: 1rem;
 }
 
-.project-btn-container > * {
+.project-btn-container>* {
   flex: 1;
   width: 120px;
   height: 2rem;
@@ -240,23 +241,23 @@ Styling for select and button elements for the Project in main page
   font-weight: 600;
 }
 
-.project-btn-container > select {
+.project-btn-container>select {
   border: 1px solid var(--blue);
 }
 
-.project-btn-container > select:hover {
+.project-btn-container>select:hover {
   outline: 1px solid var(--blue);
   cursor: pointer;
 }
 
-.project-btn-container > button {
+.project-btn-container>button {
   border: 2px solid white;
   outline: 2px solid black;
   background-color: var(--blue);
   color: var(--white);
 }
 
-.project-btn-container > button:hover {
+.project-btn-container>button:hover {
   cursor: pointer;
   outline: 1px solid var(--blue);
   border: 2px solid var(--blue);
@@ -266,9 +267,86 @@ Styling for select and button elements for the Project in main page
 
 dialog {
   margin: auto;
+  padding-left: 25px;
+  padding-right: 25px;
+  width: 400px;
 }
 
 ::backdrop {
   background-color: #000;
   opacity: 0.6;
+}
+
+dialog {
+  border-radius: 10px;
+  border: 2px solid var(--blue);
+}
+
+dialog>form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--form-gap);
+}
+
+dialog>form>div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--form-gap);
+}
+
+dialog>div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: calc(var(--form-gap) * 3);
+}
+
+dialog>div>button {
+  width: 7rem;
+}
+
+form label {
+  font-weight: 600;
+  width: max-content;
+  text-wrap: nowrap;
+}
+
+form input[type="text"],
+form input[type="date"],
+form select,
+form textarea {
+  width: 60%;
+}
+
+dialog .form-cancel-btn {
+  background-color: var(--white);
+  border: 2px solid rgb(219, 0, 0);
+}
+
+dialog .form-submit-btn {
+  background-color: var(--white);
+  border: 2px solid var(--blue);
+  color: #000;
+
+}
+
+dialog .form-cancel-btn,
+dialog .form-submit-btn {
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+dialog .form-cancel-btn:hover {
+  cursor: pointer;
+  border: 2px solid black;
+  background-color: rgb(255, 64, 64);
+  color: var(--white);
+}
+
+dialog .form-submit-btn:hover {
+  cursor: pointer;
+  background-color: var(--blue);
+  border: 2px solid var(--dark);
+  color: var(--white);
 }
