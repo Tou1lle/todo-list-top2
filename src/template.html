@@ -62,6 +62,34 @@
       <div class="project-body"></div>
     </div>
   </div>
+  <dialog>
+    <form method="post">
+      <div>
+        <label for="task-name">Task name:</label>
+        <input type="text" id="task-name" name="task-name">
+      </div>
+      <div>
+        <label for="task-duedate">Due date:</label>
+        <input type="date" id="task-duedate" name="task-duedate">
+      </div>
+      <div>
+        <label for="task-prio">Priotity (1 high - 3 low)</label>
+        <select name="task-prio" id="task-prio">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+      <div>
+        <label for="task-checked">Task done:</label>
+        <input type="checkbox" id="task-checked" name="task-checked">
+      </div>
+      <div>
+        <label for="task-notes">Notes:</label>
+        <textarea name="task-notes" id="task-notes"></textarea>
+      </div>
+    </form>
+  </dialog>
 </body>
 
 </html>

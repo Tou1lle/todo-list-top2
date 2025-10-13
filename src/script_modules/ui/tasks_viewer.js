@@ -7,6 +7,7 @@ import { ProjectManager } from "../logic/project-manager";
 function TaskViewer(projectManagerArg) {
   const projectManager = projectManagerArg;
   const addTaskBtn = document.querySelector(".add-new-task");
+  const dialog = document.querySelector("dialog");
 
   //return array of tasks
   function getSelectedTasks() {
@@ -15,6 +16,7 @@ function TaskViewer(projectManagerArg) {
 
   addTaskBtn.addEventListener("click", (e) => {
     console.log("Add Tasks button works");
+    dialog.showModal();
   });
 }
 

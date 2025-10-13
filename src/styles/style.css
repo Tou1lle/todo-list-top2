@@ -263,3 +263,12 @@ Styling for select and button elements for the Project in main page
   background-color: var(--white);
   color: var(--blue);
 }
+
+dialog {
+  margin: auto;
+}
+
+::backdrop {
+  background-color: #000;
+  opacity: 0.6;
+}
