@@ -8,6 +8,8 @@ import { Task } from "../logic/task";
  */
 function TaskViewer(projectManagerArg) {
   const projectManager = projectManagerArg;
+  const tasksContainer = document.querySelector(".project-body");
+  const menuProjects = document.querySelector(".menu-projects");
   const addTaskBtn = document.querySelector(".add-new-task");
   const dialog = document.querySelector("dialog");
   const form = document.querySelector(".form-task");
@@ -48,6 +50,29 @@ function TaskViewer(projectManagerArg) {
     return task;
   }
 
+  function createTaskDOM(task) {
+    const container = document.createElement("div");
+    container.textContent = task.title;
+    return container;
+  }
+
+  function clearTasksDOM() {
+    tasksContainer.textContent = "";
+  }
+
+  function updateTasksDOM() {
+    clearTasksDOM();
+    const tasks = getSelectedTasks();
+    tasks.forEach(element => {
+      const taskDom = createTaskDOM(element);
+      tasksContainer.appendChild(taskDom);
+    });
+  }
+
+  function getButtonClass(e) {
+    return e.target.parentNode.classList;
+  }
+
   function getSelectedProject() {
     console.log(projectManager.getSelected().id);
     return projectManager.getSelected();
@@ -77,6 +102,14 @@ function TaskViewer(projectManagerArg) {
   addTaskBtn.addEventListener("click", (e) => {
     console.log("Add Tasks button works");
     openDialog();
+  });
+
+  menuProjects.addEventListener("click", (e) => {
+    if (!getButtonClass(e).contains("button-view")) {
+      console.log("Not an appropriate button!");
+      return;
+    }
+    updateTasksDOM();
   });
 }
 
