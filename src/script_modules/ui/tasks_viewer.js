@@ -1,4 +1,5 @@
 import { ProjectManager } from "../logic/project-manager";
+import { Task } from "../logic/task";
 
 /**
  * TaskViewer displays and adds Tasks to selected Project
@@ -18,8 +19,6 @@ function TaskViewer(projectManagerArg) {
   const taskChecked = document.querySelector("#task-checked");
   const taskNotes = document.querySelector("#task-notes");
 
-  taskNotes.value = "WORK";
-
   //return array of tasks
   function getSelectedTasks() {
     return projectManager.getSelected().tasks;
@@ -38,18 +37,42 @@ function TaskViewer(projectManagerArg) {
   }
 
   function createTask() {
+    const name = taskName.value;
+    const date = taskDate.value;
+    const prio = taskPrio.value;
+    const checked = taskChecked.checked;
+    const notes = taskNotes.value;
 
+    const task = new Task(name, date, prio, checked, notes)
+
+    return task;
+  }
+
+  function getSelectedProject() {
+    console.log(projectManager.getSelected().id);
+    return projectManager.getSelected();
   }
 
   dialog.addEventListener("close", (e) => {
     resetForm();
-  })
+  });
 
   btnCancel.addEventListener("click", (e) => {
     e.preventDefault();
     resetForm();
     closeDialog();
-  })
+  });
+
+  btnSubmit.addEventListener("click", (e) => {
+    e.preventDefault();
+    const task = createTask();
+    const project = getSelectedProject();
+
+    project.addTask(task);
+    console.log(project);
+    resetForm();
+    closeDialog();
+  });
 
   addTaskBtn.addEventListener("click", (e) => {
     console.log("Add Tasks button works");
