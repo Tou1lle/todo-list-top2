@@ -105,10 +105,11 @@ function TaskViewer(projectManagerArg) {
   });
 
   menuProjects.addEventListener("click", (e) => {
-    if (!getButtonClass(e).contains("button-view")) {
+    if (!(getButtonClass(e).contains("button-view")) && !(getButtonClass(e).contains("button-delete"))) {
       console.log("Not an appropriate button!");
       return;
     }
+    if (projectManager.isEmpty()) return;
     updateTasksDOM();
   });
 }
