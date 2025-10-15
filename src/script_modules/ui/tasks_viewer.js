@@ -80,6 +80,7 @@ function TaskViewer(projectManagerArg) {
 
   dialog.addEventListener("close", (e) => {
     resetForm();
+    updateTasksDOM();
   });
 
   btnCancel.addEventListener("click", (e) => {
