@@ -51,9 +51,30 @@ function TaskViewer(projectManagerArg) {
   }
 
   function createTaskDOM(task) {
-    const container = document.createElement("div");
-    container.textContent = task.title;
-    return container;
+    const containerTask = document.createElement("div");
+    const containerTaskHead = document.createElement("div");
+    const containerTaskBody = document.createElement("div");
+    const containerTaskFoot = document.createElement("div");
+    
+    const taskTitle = document.createElement("h3");
+    const taskDate = document.createElement("p");
+    const taskCheck = document.createElement("input");
+    const taskPrio = document.createElement("p");
+    const taskPrioValue = document.createElement("span");
+    const taskNotes = document.createElement("textarea");
+
+    taskTitle.textContent = task.title;
+    taskDate.textContent = "Due Date: ";
+    taskPrio.textContent = "Priority: ";
+    taskCheck.type = "checkbox";
+
+    containerTask.append(containerTaskHead, containerTaskBody, containerTaskFoot);
+    containerTaskHead.append(taskTitle, taskCheck);
+    containerTaskBody.append(taskDate, taskPrio);
+    containerTaskFoot.append(taskNotes);
+    taskPrio.appendChild(taskPrioValue)
+
+    return containerTask;
   }
 
   function clearTasksDOM() {
