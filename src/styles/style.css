@@ -314,6 +314,7 @@ form label {
 }
 
 form input[type="text"],
+form input[id="task-name"],
 form input[type="date"],
 form select,
 form textarea {

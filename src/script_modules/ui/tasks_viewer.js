@@ -55,12 +55,18 @@ function TaskViewer(projectManagerArg) {
     const containerTaskHead = document.createElement("div");
     const containerTaskBody = document.createElement("div");
     const containerTaskFoot = document.createElement("div");
+
+    const taskTitleValue = task.title;
+    const taskDateValue = task.dueDate;
+    const taskPriValue = task.priority;
+    const taskCheckValue = task.checked;
+    const taskNotesValue = task.notes;
     
     const taskTitle = document.createElement("h3");
     const taskDate = document.createElement("p");
     const taskCheck = document.createElement("input");
     const taskPrio = document.createElement("p");
-    const taskPrioValue = document.createElement("span");
+    const taskPrioSpan = document.createElement("span");
     const taskNotes = document.createElement("textarea");
 
     taskTitle.textContent = task.title;
@@ -72,7 +78,7 @@ function TaskViewer(projectManagerArg) {
     containerTaskHead.append(taskTitle, taskCheck);
     containerTaskBody.append(taskDate, taskPrio);
     containerTaskFoot.append(taskNotes);
-    taskPrio.appendChild(taskPrioValue)
+    taskPrio.appendChild(taskPrioSpan)
 
     return containerTask;
   }
@@ -97,6 +103,23 @@ function TaskViewer(projectManagerArg) {
   function getSelectedProject() {
     console.log(projectManager.getSelected().id);
     return projectManager.getSelected();
+  }
+
+  function convertPrioToNum(value) {
+    return value === "High" ? 1 :
+           value === "Mid" ? 2 :
+           value === "Low" ? 3 : false;
+  }
+
+  function convertPrioToText(value) {
+    const valueNum = Number(value);
+    return valueNum === 1 ? "High" :
+           valueNum === 2 ? "Mid" :
+           valueNum === 3 ? "Low" : false;
+  }
+
+  function convertPrio(value) {
+    return convertPrioToText(value) || convertPrioToNum(value);
   }
 
   dialog.addEventListener("close", (e) => {
