@@ -27,7 +27,7 @@ class Task {
     , checked = false
     , notes = "I am so lazy:(") {
     this.#title = title;
-    this.#dueDate = dueDate;
+    this.#dueDate = new Date(dueDate);
     this.#priority = priority;
     this.#checked = checked;
     this.#notes = notes;
