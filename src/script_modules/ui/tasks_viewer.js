@@ -58,7 +58,7 @@ function TaskViewer(projectManagerArg) {
 
     const taskTitleValue = task.title;
     const taskDateValue = task.dueDate;
-    const taskPriValue = task.priority;
+    const taskPrioValue = convertPrio(task.priority);
     const taskCheckValue = task.checked;
     const taskNotesValue = task.notes;
     
@@ -69,10 +69,15 @@ function TaskViewer(projectManagerArg) {
     const taskPrioSpan = document.createElement("span");
     const taskNotes = document.createElement("textarea");
 
-    taskTitle.textContent = task.title;
     taskDate.textContent = "Due Date: ";
     taskPrio.textContent = "Priority: ";
     taskCheck.type = "checkbox";
+
+    taskTitle.textContent = taskTitleValue;
+    taskDate.textContent += taskDateValue;
+    taskPrioSpan.textContent = taskPrioValue;
+    taskCheck.checked = taskCheckValue;
+    taskNotes.value = taskNotesValue;
 
     containerTask.append(containerTaskHead, containerTaskBody, containerTaskFoot);
     containerTaskHead.append(taskTitle, taskCheck);
