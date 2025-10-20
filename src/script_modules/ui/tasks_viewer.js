@@ -79,6 +79,11 @@ function TaskViewer(projectManagerArg) {
     taskCheck.checked = taskCheckValue;
     taskNotes.value = taskNotesValue;
 
+    containerTask.classList.add("task-container");
+    containerTaskHead.classList.add("task-container-header");
+    containerTaskBody.classList.add("task-container-body");
+    containerTaskFoot.classList.add("task-container-footer");
+
     containerTask.append(containerTaskHead, containerTaskBody, containerTaskFoot);
     containerTaskHead.append(taskTitle, taskCheck);
     containerTaskBody.append(taskDate, taskPrio);
