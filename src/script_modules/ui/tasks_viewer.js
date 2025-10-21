@@ -143,8 +143,7 @@ function TaskViewer(projectManagerArg) {
     closeDialog();
   });
 
-  btnSubmit.addEventListener("click", (e) => {
-    e.preventDefault();
+  form.addEventListener("submit", (e) => {
     const task = createTask();
     const project = getSelectedProject();
 
@@ -152,6 +151,7 @@ function TaskViewer(projectManagerArg) {
     console.log(project);
     resetForm();
     closeDialog();
+    e.preventDefault();
   });
 
   addTaskBtn.addEventListener("click", (e) => {
