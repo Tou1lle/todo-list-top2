@@ -8,6 +8,9 @@
   --basic-font: Arial, Helvetica, sans-serif;
   --header-height: 40px;
   --form-gap: 20px;
+  --task-low: #069C56;
+  --task-mid: #FF980E;
+  --task-high: #D3212C;
 }
 
 /*
@@ -250,9 +253,11 @@ Space between the Project's name and its buttons
   font-weight: 700;
 }
 
-.task-date-created span,
-.task-prio-created span {
+.task-date-created span {
   font-weight: 500;
+}
+.task-prio-created span {
+  font-weight: 700;
 }
 
 .task-notes-created {
@@ -276,6 +281,18 @@ Space between the Project's name and its buttons
 .task-done-button:hover {
   cursor: pointer;
   box-shadow: 1px 1px 6px 0px var(--blue);
+}
+
+.task-low {
+  color: var(--task-low);
+}
+
+.task-mid {
+  color: var(--task-mid);
+}
+
+.task-high {
+  color: var(--task-high);
 }
 
 /*

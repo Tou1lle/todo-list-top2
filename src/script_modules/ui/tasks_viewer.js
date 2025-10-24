@@ -88,6 +88,7 @@ function TaskViewer(projectManagerArg) {
     taskDate.classList.add("task-date-created");
     taskPrio.classList.add("task-prio-created");
     taskNotes.classList.add("task-notes-created");
+    taskPrioSpan.classList.add(getPrioClass(taskPrioValue))
 
     containerTask.append(containerTaskHead, containerTaskBody, containerTaskFoot);
     containerTaskHead.append(taskTitle, taskCheck);
@@ -122,20 +123,26 @@ function TaskViewer(projectManagerArg) {
   }
 
   function convertPrioToNum(value) {
-    return value === "High" ? 1 :
+    return value === "Low" ? 1 :
            value === "Mid" ? 2 :
-           value === "Low" ? 3 : false;
+           value === "High" ? 3 : false;
   }
 
   function convertPrioToText(value) {
     const valueNum = Number(value);
-    return valueNum === 1 ? "High" :
+    return valueNum === 1 ? "Low" :
            valueNum === 2 ? "Mid" :
-           valueNum === 3 ? "Low" : false;
+           valueNum === 3 ? "High" : false;
   }
 
   function convertPrio(value) {
     return convertPrioToText(value) || convertPrioToNum(value);
+  }
+
+  function getPrioClass(prio) {
+    return prio === "Low" || prio == 1 ? "task-low" :
+           prio === "Mid" || prio == 2 ? "task-mid" :
+           prio === "High" || prio == 3 ? "task-high" : false;
   }
 
   dialog.addEventListener("close", (e) => {
