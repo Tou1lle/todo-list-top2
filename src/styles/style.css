@@ -255,6 +255,16 @@ Space between the Project's name and its buttons
   font-weight: 500;
 }
 
+.task-notes-created {
+  width: 100%;
+  height: 5rem;
+  margin-top: 10px;
+  resize: none;
+  background-color: var(--light-grey);
+  border: 2px solid var(--dark-grey);
+  border-radius: 4px;
+}
+
 .task-done-button {
   position: absolute;
   right: 15px;
