@@ -235,7 +235,7 @@ Space between the Project's name and its buttons
 }
 
 .task-container {
-  border: 2px solid var(--dark);
+  border: 2px solid var(--dark-grey);
   border-radius: 5px;
   box-shadow: 1px 1px 6px 0px var(--dark-grey);
   padding: 0.5rem;

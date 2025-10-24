@@ -34,6 +34,10 @@ class Task {
     this.#id = crypto.randomUUID();
   }
 
+  toggleChecked() {
+    this.checked = !this.checked;
+  }
+
   get title() { return this.#title; }
   get dueDate() { return this.#dueDate; }
   get priority() { return this.#priority; }

@@ -97,6 +97,10 @@ function TaskViewer(projectManagerArg) {
     taskPrio.appendChild(taskPrioSpan)
     taskDate.appendChild(taskDateSpan)
 
+    taskCheck.addEventListener("change", (e) => {
+      task.toggleChecked();
+    })
+
     return containerTask;
   }
 
