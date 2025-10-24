@@ -64,6 +64,7 @@ function TaskViewer(projectManagerArg) {
     
     const taskTitle = document.createElement("h3");
     const taskDate = document.createElement("p");
+    const taskDateSpan = document.createElement("span");
     const taskCheck = document.createElement("input");
     const taskPrio = document.createElement("p");
     const taskPrioSpan = document.createElement("span");
@@ -74,7 +75,7 @@ function TaskViewer(projectManagerArg) {
     taskCheck.type = "checkbox";
 
     taskTitle.textContent = taskTitleValue;
-    taskDate.textContent += taskDateValue;
+    taskDateSpan.textContent = taskDateValue;
     taskPrioSpan.textContent = taskPrioValue;
     taskCheck.checked = taskCheckValue;
     taskNotes.value = taskNotesValue;
@@ -83,12 +84,17 @@ function TaskViewer(projectManagerArg) {
     containerTaskHead.classList.add("task-container-header");
     containerTaskBody.classList.add("task-container-body");
     containerTaskFoot.classList.add("task-container-footer");
+    taskCheck.classList.add("task-done-button");
+    taskDate.classList.add("task-date-created");
+    taskPrio.classList.add("task-prio-created");
+    taskNotes.classList.add("task-notes-created");
 
     containerTask.append(containerTaskHead, containerTaskBody, containerTaskFoot);
     containerTaskHead.append(taskTitle, taskCheck);
     containerTaskBody.append(taskDate, taskPrio);
     containerTaskFoot.append(taskNotes);
     taskPrio.appendChild(taskPrioSpan)
+    taskDate.appendChild(taskDateSpan)
 
     return containerTask;
   }
