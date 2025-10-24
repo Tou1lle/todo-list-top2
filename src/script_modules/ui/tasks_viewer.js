@@ -101,6 +101,10 @@ function TaskViewer(projectManagerArg) {
       task.toggleChecked();
     })
 
+    taskNotes.addEventListener("input", (e) => {
+      task.notes = taskNotes.value;
+    })
+
     return containerTask;
   }
 
