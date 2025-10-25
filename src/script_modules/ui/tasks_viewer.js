@@ -112,6 +112,30 @@ function TaskViewer(projectManagerArg) {
       taskTitle.textContent = task.title;
     });
 
+    taskPrioSpan.addEventListener("click", (e) => {
+      const prioMap = {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "low": 1,
+        "mid": 2,
+        "high": 3,
+      };
+      const currentClass = getPrioClass(task.priority);
+
+      const input = prompt("New Task Priority?");
+      if (!input) return;
+
+      const normalized = input.trim().toLowerCase();
+      const newPrio = prioMap[normalized];
+      if (!newPrio) return;
+
+      task.priority = newPrio;
+      taskPrioSpan.textContent = convertPrio(task.priority);
+      const newPrioClass = getPrioClass(task.priority);
+      taskPrioSpan.classList.replace(currentClass, newPrioClass);
+    })
+
     return containerTask;
   }
 
