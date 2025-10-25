@@ -53,7 +53,7 @@ function ProjectViewController(projectManagerArg) {
       };
       console.log(newName);
       selectedProject.name = newName;
-      updateMain();
+      h2.textContent = selectedProject.name;
       updateNameInOption();
     })
 
