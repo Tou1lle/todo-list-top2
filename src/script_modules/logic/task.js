@@ -27,7 +27,7 @@ class Task {
     , checked = false
     , notes = "I am so lazy:(") {
     this.#title = title;
-    this.#dueDate = new Date(dueDate);
+    this.#dueDate = this.checkValidDate(dueDate);
     this.#priority = priority;
     this.#checked = checked;
     this.#notes = notes;
@@ -36,6 +36,14 @@ class Task {
 
   toggleChecked() {
     this.checked = !this.checked;
+  }
+
+  checkValidDate(dateArg) {
+    if (new Date(dateArg).toString().includes("Invalid")) {
+      return "No Due Date";
+    } else {
+      return new Date(dateArg);
+    };
   }
 
   get title() { return this.#title; }
