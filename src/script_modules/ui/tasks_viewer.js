@@ -94,16 +94,23 @@ function TaskViewer(projectManagerArg) {
     containerTaskHead.append(taskTitle, taskCheck);
     containerTaskBody.append(taskDate, taskPrio);
     containerTaskFoot.append(taskNotes);
-    taskPrio.appendChild(taskPrioSpan)
-    taskDate.appendChild(taskDateSpan)
+    taskPrio.appendChild(taskPrioSpan);
+    taskDate.appendChild(taskDateSpan);
 
     taskCheck.addEventListener("change", (e) => {
       task.toggleChecked();
-    })
+    });
 
     taskNotes.addEventListener("input", (e) => {
       task.notes = taskNotes.value;
-    })
+    });
+
+    taskTitle.addEventListener("click", (e) => {
+      const newTitle = prompt("New Task name?");
+      if (!newTitle) { return };
+      task.title = newTitle;
+      taskTitle.textContent = task.title;
+    });
 
     return containerTask;
   }
