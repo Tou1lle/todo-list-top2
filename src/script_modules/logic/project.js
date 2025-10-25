@@ -1,4 +1,5 @@
 import { Task } from "./task.js";
+import { compareAsc } from "date-fns";
 
 /**
  * Project stores Tasks
@@ -53,7 +54,14 @@ class Project {
   }
 
   compareDates(taskA, taskB) {
-    return taskA.dueDate.getTime() - taskB.dueDate.getTime();
+    const typeA = typeof taskA.dueDate;
+    const typeB = typeof taskB.dueDate;
+
+    if (typeA === "string" && typeB === "string") return 0;
+    if (typeA === "string" && typeB !== "string") return 1;
+    if (typeA !== "string" && typeB === "string") return -1;
+
+    return taskA.dueDate - taskB.dueDate;
   }
 
   compareCreationTime(taskA, taskB) {
@@ -78,6 +86,10 @@ class Project {
 
   sortByCreation() {
     this.tasks.sort(this.compareCreationTime);
+  }
+
+  sortByDate() {
+    this.tasks.sort(this.compareDates);
   }
 
   get tasks() { return this.#tasks; }
