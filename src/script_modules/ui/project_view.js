@@ -45,6 +45,17 @@ function ProjectViewController(projectManagerArg) {
     const selectedDOM = getDOMbyID(selectedProject.id, getProjectsDOM());
     setSelectedDOM(selectedDOM);
 
+    h2.addEventListener("click", (e) => {
+      const newName = prompt("Your new project name?");
+      if (!newName) { 
+        console.log("No new name");
+        return 
+      };
+      console.log(newName);
+      selectedProject.name = newName;
+      updateMain();
+    })
+
     console.log(getDOMbyID(selectedProject.id, getProjectsDOM()));
   }
 

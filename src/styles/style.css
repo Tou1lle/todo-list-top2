@@ -261,7 +261,7 @@ Space between the Project's name and its buttons
 }
 
 .task-container-header h3 {
-  width: min-content;
+  width: fit-content;
 }
 
 .task-container-body > p:last-child span:hover,
