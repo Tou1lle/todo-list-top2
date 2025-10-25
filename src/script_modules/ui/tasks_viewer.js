@@ -81,6 +81,9 @@ function TaskViewer(projectManagerArg) {
     taskNotes.value = taskNotesValue;
 
     containerTask.classList.add("task-container");
+    if (task.checked) {
+      containerTask.classList.add("task-container-done");
+    }
     containerTaskHead.classList.add("task-container-header");
     containerTaskBody.classList.add("task-container-body");
     containerTaskFoot.classList.add("task-container-footer");
@@ -99,6 +102,7 @@ function TaskViewer(projectManagerArg) {
 
     taskCheck.addEventListener("change", (e) => {
       task.toggleChecked();
+      containerTask.classList.toggle("task-container-done");
     });
 
     taskNotes.addEventListener("input", (e) => {

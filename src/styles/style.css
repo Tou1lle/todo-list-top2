@@ -242,6 +242,10 @@ Space between the Project's name and its buttons
   position: relative;
 }
 
+.task-container-done {
+  opacity: 0.5;
+}
+
 .task-container-header h3 {
   color: var(--blue);
   font-size: 1.5rem;
