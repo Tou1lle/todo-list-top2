@@ -1,5 +1,3 @@
-import { format } from "date-fns";
-
 /**
  * This class is a template for single tasks that
  * the user can create.
@@ -45,7 +43,7 @@ class Task {
     if (new Date(dateArg).toString().includes("Invalid")) {
       return "No Due Date";
     } else {
-      return format(new Date(dateArg), 'do MMM yyyy');
+      return new Date(dateArg);
     };
   }
 

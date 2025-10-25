@@ -1,5 +1,6 @@
 import { ProjectManager } from "../logic/project-manager";
 import { Task } from "../logic/task";
+import { format } from "date-fns";
 
 /**
  * TaskViewer displays and adds Tasks to selected Project
@@ -59,7 +60,7 @@ function TaskViewer(projectManagerArg) {
     const containerTaskFoot = document.createElement("div");
 
     const taskTitleValue = task.title;
-    const taskDateValue = task.dueDate;
+    const taskDateValue = format(task.dueDate, "do MMM yyyy");
     const taskPrioValue = convertPrio(task.priority);
     const taskCheckValue = task.checked;
     const taskNotesValue = task.notes;
