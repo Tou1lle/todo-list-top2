@@ -60,7 +60,7 @@ function TaskViewer(projectManagerArg) {
     const containerTaskFoot = document.createElement("div");
 
     const taskTitleValue = task.title;
-    const taskDateValue = format(task.dueDate, "do MMM yyyy");
+    const taskDateValue =  typeof task.dueDate === "string" ? task.dueDate : format(task.dueDate, "do MMM yyyy");
     const taskPrioValue = convertPrio(task.priority);
     const taskCheckValue = task.checked;
     const taskNotesValue = task.notes;
@@ -195,7 +195,8 @@ function TaskViewer(projectManagerArg) {
   function sortTasks() {
     sortBtn.value === "default" ? projectManager.getSelected().sortByCreation() :
     sortBtn.value === "priority" ? projectManager.getSelected().sortByPrio() :
-    sortBtn.value === "checked" ? projectManager.getSelected().sortByChecked() : false;
+    sortBtn.value === "checked" ? projectManager.getSelected().sortByChecked() : 
+    sortBtn.value === "date" ? projectManager.getSelected().sortByDate() : false;
   }
 
   dialog.addEventListener("close", (e) => {
