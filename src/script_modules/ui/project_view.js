@@ -54,6 +54,7 @@ function ProjectViewController(projectManagerArg) {
       console.log(newName);
       selectedProject.name = newName;
       updateMain();
+      updateNameInOption();
     })
 
     console.log(getDOMbyID(selectedProject.id, getProjectsDOM()));
@@ -96,6 +97,7 @@ function ProjectViewController(projectManagerArg) {
     if (!projectManager.hasSelected()) {
       projectManager.setFirstSelected();
       updateMain();
+      updateNameInOption();
     }
   }
 
@@ -115,6 +117,13 @@ function ProjectViewController(projectManagerArg) {
   function setSelectedDOM(dom) {
     resetSelectedDOM();
     dom.classList.add("selected-project");
+  }
+
+  function updateNameInOption() {
+    const selectedProject = projectManager.getSelected();
+    const selectedDOM = getDOMbyID(selectedProject.id, getProjectsDOM());
+    const title = selectedDOM.querySelector("h3");
+    title.textContent = selectedProject.name;
   }
 
   menuProjects.addEventListener("click", e => {
