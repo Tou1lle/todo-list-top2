@@ -7,12 +7,12 @@ import { format } from "date-fns";
  */
 class Task {
   #title;
-  #description;
   #dueDate;
   #priority;
   #checked
   #notes;
   #id;
+  #creationTime;
 
   /**
    * 
@@ -34,6 +34,7 @@ class Task {
     this.#checked = checked;
     this.#notes = notes;
     this.#id = crypto.randomUUID();
+    this.#creationTime = Date.now();
   }
 
   toggleChecked() {
@@ -54,6 +55,7 @@ class Task {
   get checked() { return this.#checked; }
   get notes() { return this.#notes; }
   get id() { return this.#id };
+  get creationTime() { return this.#creationTime };
 
   set title(title) { this.#title = title }
   set dueDate(dueDate) { this.#dueDate = dueDate }

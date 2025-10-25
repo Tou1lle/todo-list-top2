@@ -20,6 +20,8 @@ function TaskViewer(projectManagerArg) {
   const taskPrio = document.querySelector("#task-prio");
   const taskChecked = document.querySelector("#task-checked");
   const taskNotes = document.querySelector("#task-notes");
+  const sortBtn = document.querySelector("select[name='project-sort']");
+  const filterBtn = document.querySelector("select[name='project-filter']");
 
   //return array of tasks
   function getSelectedTasks() {
@@ -150,6 +152,7 @@ function TaskViewer(projectManagerArg) {
   function updateTasksDOM() {
     clearTasksDOM();
     const tasks = getSelectedTasks();
+    sortTasks();
     tasks.forEach(element => {
       const taskDom = createTaskDOM(element);
       tasksContainer.appendChild(taskDom);
@@ -188,6 +191,12 @@ function TaskViewer(projectManagerArg) {
            prio === "High" || prio == 3 ? "task-high" : false;
   }
 
+  function sortTasks() {
+    sortBtn.value === "default" ? projectManager.getSelected().sortByCreation() :
+    sortBtn.value === "priority" ? projectManager.getSelected().sortByPrio() :
+    sortBtn.value === "checked" ? projectManager.getSelected().sortByChecked() : false;
+  }
+
   dialog.addEventListener("close", (e) => {
     resetForm();
     updateTasksDOM();
@@ -223,6 +232,11 @@ function TaskViewer(projectManagerArg) {
     if (projectManager.isEmpty()) return;
     updateTasksDOM();
   });
+
+  sortBtn.addEventListener("change", (e) => {
+    sortTasks();
+    updateTasksDOM();
+  })
 }
 
 export { TaskViewer }

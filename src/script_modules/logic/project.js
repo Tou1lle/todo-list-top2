@@ -56,12 +56,28 @@ class Project {
     return taskA.dueDate.getTime() - taskB.dueDate.getTime();
   }
 
+  compareCreationTime(taskA, taskB) {
+    return taskA.creationTime - taskB.creationTime;
+  }
+
   isEmpty() {
     return this.#tasks.length === 0;
   }
 
   toggleSelected() {
     this.selected = !this.selected;
+  }
+
+  sortByPrio() {
+    this.tasks.sort(this.comparePriority);
+  }
+
+  sortByChecked() {
+    this.tasks.sort(this.compareChecked);
+  }
+
+  sortByCreation() {
+    this.tasks.sort(this.compareCreationTime);
   }
 
   get tasks() { return this.#tasks; }
