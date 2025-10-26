@@ -87,6 +87,7 @@ function ProjectMenuController(projectManagerArg) {
   }
 
   function initial() {
+    if (!projectManager.isEmpty) return;
     const defaultProject = new Project();
     projectManager.addProject(defaultProject);
     addProjectToMenu(createProjectDOM(defaultProject));
