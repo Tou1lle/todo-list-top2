@@ -3,10 +3,15 @@ import { Project } from "../logic/project";
 import viewIcon from "./../../assets/view-icon2.svg";
 import deleteIcon from "./../../assets/delete-icon2.svg";
 
-function ProjectMenuController() {
+/**
+ * 
+ * @param {ProjectManager} projectManagerArg 
+ * @returns 
+ */
+function ProjectMenuController(projectManagerArg) {
   const menuProjects = document.querySelector(".menu-projects");
   const addProjectBtn = document.querySelector(".add-new-project");
-  const projectManager = new ProjectManager();
+  const projectManager = projectManagerArg;
   initial();
 
   function checkEnteredName(name) {
@@ -87,10 +92,6 @@ function ProjectMenuController() {
     addProjectToMenu(createProjectDOM(defaultProject));
   }
 
-  function getProjectManager() {
-    return projectManager;
-  }
-
   addProjectBtn.addEventListener("click", () => {
     const projectName = prompt("Create a name for your new Project", "My new Project");
     if (!checkEnteredName(projectName)) { return };
@@ -99,8 +100,6 @@ function ProjectMenuController() {
     projectManager.logAllProjects();
     updateMenu();
   })
-
-  return { getProjectManager }
 }
 
 export { ProjectMenuController };

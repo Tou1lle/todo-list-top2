@@ -8,9 +8,12 @@ import "./styles/josh_comeau_reset.css";
 import "./styles/style.css";
 
 console.log("Hello World!");
-const projectMenuController = ProjectMenuController();
-const projectViewController = ProjectViewController(projectMenuController.getProjectManager());
-const taskViewer = TaskViewer(projectMenuController.getProjectManager());
+
+const projectManager = new ProjectManager();
+
+const projectMenuController = ProjectMenuController(projectManager);
+const projectViewController = ProjectViewController(projectManager);
+const taskViewer = TaskViewer(projectManager);
 
 /*
 // Creating tasks
