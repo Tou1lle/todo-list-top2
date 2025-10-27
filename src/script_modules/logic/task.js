@@ -61,6 +61,17 @@ class Task {
   set checked(checked) { this.#checked = checked }
   set notes(notes) { this.#notes = notes }
 
+  toJSON() {
+    return {
+      title: this.title,
+      dueDate: this.dueDate,
+      priority: this.priority,
+      checked: this.checked,
+      notes: this.notes,
+      id: this.id,
+      creationTime: this.creationTime
+    }
+  }
 }
 
 export { Task };

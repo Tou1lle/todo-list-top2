@@ -101,6 +101,13 @@ function ProjectMenuController(projectManagerArg) {
     projectManager.logAllProjects();
     updateMenu();
   })
+
+
+  //testing local storage
+  const h1LocalStorageView = document.querySelector("h1");
+  h1LocalStorageView.addEventListener("click", (e) => {
+    localStorage.setItem("projects", JSON.stringify(projectManager.projects));
+  })
 }
 
 export { ProjectMenuController };

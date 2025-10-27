@@ -101,6 +101,15 @@ class Project {
   set name(name) { this.#name = name }
   set id(randomID) { this.#id = randomID };
   set selected(bool) { this.#selected = bool; } 
+
+  toJSON() {
+    return {
+      name: this.name,
+      selected: this.selected,
+      id: this.id,
+      tasks: this.tasks
+    }
+  }
 }
 
 export { Project };

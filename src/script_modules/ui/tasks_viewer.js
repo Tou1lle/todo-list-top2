@@ -44,7 +44,7 @@ function TaskViewer(projectManagerArg) {
   function createTask() {
     const name = taskName.value;
     const date = taskDate.value;
-    const prio = taskPrio.value;
+    const prio = parseInt(taskPrio.value);
     const checked = taskChecked.checked;
     const notes = taskNotes.value;
 
