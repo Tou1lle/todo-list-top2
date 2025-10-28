@@ -79,6 +79,7 @@ function ProjectViewController(projectManagerArg) {
     if (projectManager.isEmpty()) {
       clearMain();
       hideBtns();
+      localStorage.setItem("projects", projectManager.projects);
       //add function to display some message that there are no projects
       return;
     }

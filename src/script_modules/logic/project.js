@@ -15,11 +15,11 @@ class Project {
    * 
    * @param {string} name name of the project that the user creates
    */
-  constructor(name = "My new Project") {
-    this.#tasks = [];
+  constructor(name = "My new Project", id = crypto.randomUUID(), selected = false, tasks = []) {
+    this.#tasks = tasks;
     this.#name = name;
-    this.#id = crypto.randomUUID();
-    this.#selected = false;
+    this.#id = id;
+    this.#selected = selected;
   }
 
   addTaskWithParam(title, description, dueDate, priority, checked, notes) {

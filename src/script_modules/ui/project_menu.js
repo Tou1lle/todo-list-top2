@@ -57,6 +57,7 @@ function ProjectMenuController(projectManagerArg) {
       deleteProject(id);
       updateMenu();
       projectManager.logAllProjects();
+      localStorage.setItem("projects", JSON.stringify(projectManager.projects));
     });
 
     if (project.selected) {
@@ -87,10 +88,39 @@ function ProjectMenuController(projectManagerArg) {
   }
 
   function initial() {
-    if (!projectManager.isEmpty) return;
-    const defaultProject = new Project();
-    projectManager.addProject(defaultProject);
-    addProjectToMenu(createProjectDOM(defaultProject));
+    if (!hasLocalProjects()) {
+      const defaultProject = new Project();
+      projectManager.addProject(defaultProject);
+      addProjectToMenu(createProjectDOM(defaultProject));
+      localStorage.setItem("projects", JSON.stringify(projectManager.projects));
+      return;
+    }
+
+    const localProjects = getLocalProjects();
+    localProjects.forEach(project => projectManager.addProject(project));
+    projectManager.setFirstSelected();
+    projectManager.projects.forEach(project => {
+      addProjectToMenu(createProjectDOM(project));
+    })
+  }
+
+  function hasLocalProjects() {
+    return localStorage.getItem("projects");
+  }
+
+  function getLocalProjects() {
+    const projectsJSON = localStorage.getItem("projects");
+    const projectsParsed = JSON.parse(projectsJSON);
+    const projects = [];
+
+    projectsParsed.forEach(project => {
+      const newProject = new Project(project.name, project.id, project.selected, project.tasks);
+      projects.push(newProject);
+      console.log("The created project from json values: ", newProject);
+    })
+
+    console.log(projects);
+    return projects;
   }
 
   addProjectBtn.addEventListener("click", () => {
@@ -100,6 +130,7 @@ function ProjectMenuController(projectManagerArg) {
     projectManager.addProject(project);
     projectManager.logAllProjects();
     updateMenu();
+    localStorage.setItem("projects", JSON.stringify(projectManager.projects));
   })
 
 
@@ -107,6 +138,7 @@ function ProjectMenuController(projectManagerArg) {
   const h1LocalStorageView = document.querySelector("h1");
   h1LocalStorageView.addEventListener("click", (e) => {
     localStorage.setItem("projects", JSON.stringify(projectManager.projects));
+    getLocalProjects();
   })
 }
 
