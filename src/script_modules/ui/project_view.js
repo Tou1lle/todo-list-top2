@@ -55,6 +55,7 @@ function ProjectViewController(projectManagerArg) {
       selectedProject.name = newName;
       h2.textContent = selectedProject.name;
       updateNameInOption();
+      localStorage.setItem("projects", JSON.stringify(projectManager.projects));
     })
 
     console.log(getDOMbyID(selectedProject.id, getProjectsDOM()));
@@ -79,7 +80,8 @@ function ProjectViewController(projectManagerArg) {
     if (projectManager.isEmpty()) {
       clearMain();
       hideBtns();
-      localStorage.setItem("projects", projectManager.projects);
+      //localStorage.setItem("projects", JSON.stringify(projectManager.projects));
+      localStorage.removeItem("projects");
       //add function to display some message that there are no projects
       return;
     }
@@ -95,11 +97,10 @@ function ProjectViewController(projectManagerArg) {
   }
 
   function initial() {
-    if (!projectManager.hasSelected()) {
       projectManager.setFirstSelected();
       updateMain();
       updateNameInOption();
-    }
+      console.log("Status of Projects after Project View initial", projectManager.projects);
   }
 
   function getProjectsDOM() {

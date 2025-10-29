@@ -91,6 +91,7 @@ function ProjectMenuController(projectManagerArg) {
     if (!hasLocalProjects()) {
       const defaultProject = new Project();
       projectManager.addProject(defaultProject);
+      projectManager.setFirstSelected();
       addProjectToMenu(createProjectDOM(defaultProject));
       localStorage.setItem("projects", JSON.stringify(projectManager.projects));
       return;
@@ -102,6 +103,7 @@ function ProjectMenuController(projectManagerArg) {
     projectManager.projects.forEach(project => {
       addProjectToMenu(createProjectDOM(project));
     })
+    console.log("Status of Projects after Project Manager inital", projectManager.projects);
   }
 
   function hasLocalProjects() {
@@ -114,11 +116,17 @@ function ProjectMenuController(projectManagerArg) {
     const projects = [];
 
     projectsParsed.forEach(project => {
-      const newProject = new Project(project.name, project.id, project.selected, project.tasks);
+      const newProject = new Project(project.name, project.id, project.selected);
       projects.push(newProject);
       console.log("The created project from json values: ", newProject);
     })
 
+    const project = projects[0];
+    console.log("PARSED: ", projectsParsed);
+    const projectsMappedID = projectsParsed.map(project => project.id);
+    console.log("ONLY IDs: ", projectsMappedID);
+    const localTask = projectsParsed.filter(projectLocal => projectLocal.id === project.id)[0];
+    console.log("FILTERED PROJECT: ", localTask);
     console.log(projects);
     return projects;
   }

@@ -23,6 +23,7 @@ function TaskViewer(projectManagerArg) {
   const taskNotes = document.querySelector("#task-notes");
   const sortBtn = document.querySelector("select[name='project-sort']");
   const filterBtn = document.querySelector("select[name='project-filter']");
+  initial();
 
   //return array of tasks
   function getSelectedTasks() {
@@ -60,11 +61,11 @@ function TaskViewer(projectManagerArg) {
     const containerTaskFoot = document.createElement("div");
 
     const taskTitleValue = task.title;
-    const taskDateValue =  typeof task.dueDate === "string" ? task.dueDate : format(task.dueDate, "do MMM yyyy");
+    const taskDateValue = typeof task.dueDate === "string" ? task.dueDate : format(task.dueDate, "do MMM yyyy");
     const taskPrioValue = convertPrio(task.priority);
     const taskCheckValue = task.checked;
     const taskNotesValue = task.notes;
-    
+
     const taskTitle = document.createElement("h3");
     const taskDate = document.createElement("p");
     const taskDateSpan = document.createElement("span");
@@ -106,10 +107,12 @@ function TaskViewer(projectManagerArg) {
     taskCheck.addEventListener("change", (e) => {
       task.toggleChecked();
       containerTask.classList.toggle("task-container-done");
+      localStorage.setItem("projects", JSON.stringify(projectManager.projects));
     });
 
     taskNotes.addEventListener("input", (e) => {
       task.notes = taskNotes.value;
+      localStorage.setItem("projects", JSON.stringify(projectManager.projects));
     });
 
     taskTitle.addEventListener("click", (e) => {
@@ -117,6 +120,8 @@ function TaskViewer(projectManagerArg) {
       if (!newTitle) { return };
       task.title = newTitle;
       taskTitle.textContent = task.title;
+      localStorage.setItem("projects", JSON.stringify(projectManager.projects));
+
     });
 
     taskPrioSpan.addEventListener("click", (e) => {
@@ -141,6 +146,7 @@ function TaskViewer(projectManagerArg) {
       taskPrioSpan.textContent = convertPrio(task.priority);
       const newPrioClass = getPrioClass(task.priority);
       taskPrioSpan.classList.replace(currentClass, newPrioClass);
+      localStorage.setItem("projects", JSON.stringify(projectManager.projects));
     })
 
     return containerTask;
@@ -171,15 +177,15 @@ function TaskViewer(projectManagerArg) {
 
   function convertPrioToNum(value) {
     return value === "Low" ? 1 :
-           value === "Mid" ? 2 :
-           value === "High" ? 3 : false;
+      value === "Mid" ? 2 :
+        value === "High" ? 3 : false;
   }
 
   function convertPrioToText(value) {
     const valueNum = Number(value);
     return valueNum === 1 ? "Low" :
-           valueNum === 2 ? "Mid" :
-           valueNum === 3 ? "High" : false;
+      valueNum === 2 ? "Mid" :
+        valueNum === 3 ? "High" : false;
   }
 
   function convertPrio(value) {
@@ -188,16 +194,55 @@ function TaskViewer(projectManagerArg) {
 
   function getPrioClass(prio) {
     return prio === "Low" || prio == 1 ? "task-low" :
-           prio === "Mid" || prio == 2 ? "task-mid" :
-           prio === "High" || prio == 3 ? "task-high" : false;
+      prio === "Mid" || prio == 2 ? "task-mid" :
+        prio === "High" || prio == 3 ? "task-high" : false;
   }
 
   function sortTasks() {
     sortBtn.value === "default" ? projectManager.getSelected().sortByCreation() :
-    sortBtn.value === "priority" ? projectManager.getSelected().sortByPrio() :
-    sortBtn.value === "checked" ? projectManager.getSelected().sortByChecked() : 
-    sortBtn.value === "date" ? projectManager.getSelected().sortByDate() : false;
+      sortBtn.value === "priority" ? projectManager.getSelected().sortByPrio() :
+        sortBtn.value === "checked" ? projectManager.getSelected().sortByChecked() :
+          sortBtn.value === "date" ? projectManager.getSelected().sortByDate() : false;
   }
+
+  function initial() {
+    const projects = projectManager.projects;
+    const projectsJSON = localStorage.getItem("projects");
+    const projectsParsed = JSON.parse(projectsJSON);
+    const projectMappedID = projectsParsed.map(project => project.id);
+
+    projects.forEach(project => {
+      const localTasks = projectsParsed.filter(projectLocal => projectLocal.id === project.id)[0];
+      localTasks.tasks.forEach(task => {
+        const newTask = new Task(task.title, task.dueDate, task.priority, task.checked, task.notes);
+        project.addTask(newTask);
+      })
+    });
+
+    console.log("Status of Projects after Task Viewer Initial", projects)
+    updateTasksDOM();
+  }
+
+  /**
+   * function initial() {
+    const projects = projectManager.projects;
+    const projectsJSON = localStorage.getItem("projects");
+    const projectsParsed = JSON.parse(projectsJSON);
+    const projectMappedID = projectsParsed.map(project => project.id);
+
+    projects.forEach(project => {
+      if (projectMappedID.includes(project.id)) {
+        const localTask = projectsParsed.filter(projectLocal => projectLocal.id === project.id)[0];
+        localTask.tasks.forEach(task => {
+          const newTask = new Task(task.title, task.dueDate, task.priority, task.checked, task.notes);
+          project.addTask(newTask);
+        })
+      }
+    });
+
+    updateTasksDOM();
+  }
+   */
 
   dialog.addEventListener("close", (e) => {
     resetForm();
@@ -219,6 +264,7 @@ function TaskViewer(projectManagerArg) {
     console.log(project);
     resetForm();
     closeDialog();
+    localStorage.setItem("projects", JSON.stringify(projectManager.projects));
   });
 
   addTaskBtn.addEventListener("click", (e) => {
