@@ -1,4 +1,3 @@
-import { ProjectManager } from "../logic/project-manager";
 import { Project } from "../logic/project";
 import viewIcon from "./../../assets/view-icon2.svg";
 import deleteIcon from "./../../assets/delete-icon2.svg";
@@ -144,7 +143,7 @@ function ProjectMenuController(projectManagerArg) {
 
   //testing local storage
   const h1LocalStorageView = document.querySelector("h1");
-  h1LocalStorageView.addEventListener("click", (e) => {
+  h1LocalStorageView.addEventListener("click", () => {
     localStorage.setItem("projects", JSON.stringify(projectManager.projects));
     getLocalProjects();
   })
